@@ -1,0 +1,6 @@
+{% extends "base.fbml" %}
+
+{% block content %}
+<h1>Playing <fb:application-name linked="false"/></h1> <br> <br>
+{% endblock %}
+
