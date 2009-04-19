@@ -1,3 +1,8 @@
+# vim: sw=4 ts=4 expandtab ai
+#
+# This file is part of Bender's Property
+# Copyright (C) 2009 Bender's Property development team. All rights reserved.
+#
 from django.db import models
 
 # get_facebook_client lets us get the current Facebook object
@@ -6,7 +11,7 @@ from facebook.djangofb import get_facebook_client
 
 class UserManager(models.Manager):
     """Custom manager for a Facebook User."""
-    
+
     def get_current(self):
         """Gets a User object for the logged-in Facebook user."""
         facebook = get_facebook_client()

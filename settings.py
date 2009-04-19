@@ -1,4 +1,4 @@
-# Django settings for fbsample project.
+# Django settings for bendersproperty project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG

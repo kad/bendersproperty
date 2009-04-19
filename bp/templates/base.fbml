@@ -4,7 +4,7 @@
   {% comment %}
   <fb:action href="monetize">Paid services</fb:action>
   {% endcomment %}
-  <fb:help href="help">Help and Manual</fb:help> 
+  <fb:help href="help">Help and Manual</fb:help>
   {% block dashboard %}{% endblock %}
 </fb:dashboard>
 

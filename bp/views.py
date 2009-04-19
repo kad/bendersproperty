@@ -1,3 +1,8 @@
+# vim: sw=4 ts=4 expandtab ai
+#
+# This file is part of Bender's Property
+# Copyright (C) 2009 Bender's Property development team. All rights reserved.
+#
 from django.http import HttpResponse
 from django.views.generic.simple import direct_to_template
 
@@ -38,7 +43,7 @@ def canvas(request):
 @facebook.require_login()
 def index(request):
     # Default page
-    return direct_to_template(request, 'index.fbml') 
+    return direct_to_template(request, 'index.fbml')
 
 @facebook.require_login()
 def invite(request):
@@ -47,10 +52,10 @@ def invite(request):
     except FacebookError, exc:
         friends = []
 
-    return direct_to_template(request, 'invite.fbml', 
+    return direct_to_template(request, 'invite.fbml',
         extra_context={'uid': request.facebook.uid, 'friends': friends, 'add_url': request.facebook.get_add_url(), })
 
 @facebook.require_login()
 def help(request):
-    return direct_to_template(request, 'help.fbml') 
+    return direct_to_template(request, 'help.fbml')
 
