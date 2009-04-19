@@ -43,7 +43,7 @@ def canvas(request):
 @facebook.require_login()
 def index(request):
     # Default page
-    return direct_to_template(request, 'index.fbml')
+    return direct_to_template(request, 'index.fbml', extra_context={'uid': request.facebook.uid})
 
 @facebook.require_login()
 def invite(request):

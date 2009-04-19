@@ -1,8 +1,5 @@
 {% extends "base.fbml" %}
 
-{% block dashboard %}
-  Welcome, <fb:name uid="{{ fbuser.id }}" firstnameonly="true" useyou="false" />!
-{% endblock %}
-
 {% block content %}
+  Welcome, <fb:name uid="{{ uid }}" firstnameonly="true" useyou="false" />!
 {% endblock %}
