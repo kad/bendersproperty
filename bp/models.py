@@ -9,6 +9,20 @@ from django.db import models
 # from outside of a view, which lets us have cleaner code
 from facebook.djangofb import get_facebook_client
 
+from django.db.models.fields import PositiveIntegerField
+from django.conf import settings
+
+class BigPositiveIntegerField(PositiveIntegerField):
+    empty_strings_allowed=False
+    def get_internal_type(self):
+        return "BigPositiveIntegerField"
+
+    def db_type(self):
+        if  settings.DATABASE_ENGINE == 'oracle':
+            return 'NUMBER(19) UNSIGNED'
+        else:
+            return 'bigint unsigned'
+
 class UserManager(models.Manager):
     """Custom manager for a Facebook User."""
 
@@ -25,7 +39,7 @@ class User(models.Model):
     """A simple User model for Facebook users."""
 
     # We use the user's UID as the primary key in our database.
-    id = models.IntegerField(primary_key=True)
+    id = BigPositiveIntegerField(primary_key=True)
 
     # TODO: The data that you want to store for each user would go here.
     # For this sample, we let users let people know their favorite progamming
