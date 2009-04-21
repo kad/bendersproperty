@@ -9,13 +9,13 @@
 </fb:dashboard>
 
 <fb:tabs>
- <fb:tab_item href="summary" title="My Summary" />
- <fb:tab_item href="land_marketplace" title="Land Marketplace" />
- <fb:tab_item href="property_marketplace" title="Property Marketplace" />
+ <fb:tab_item href="summary" title="My Summary" {% ifequal current_page "summary" %}selected="true"{% endifequal %}/>
+ <fb:tab_item href="land_marketplace" title="Land Marketplace" {% ifequal current_page "land_marketplace" %}selected="true"{% endifequal %}/>
+ <fb:tab_item href="property_marketplace" title="Property Marketplace" {% ifequal current_page "property_marketplace" %}selected="true"{% endifequal %}/>
  {% block tabs %}{% endblock %}
- <fb:tab_item href="charts" title="Charts" align="right" />
- <fb:tab_item href="friends" title="My Friends" align="right" />
- <fb:tab_item href="leaderboard" title="Leaderboard" align="right" />
+ <fb:tab_item href="charts" title="Charts" align="right" {% ifequal current_page "charts" %}selected="true"{% endifequal %}/>
+ <fb:tab_item href="friends" title="My Friends" align="right" {% ifequal current_page "friends" %}selected="true"{% endifequal %}/>
+ <fb:tab_item href="leaderboard" title="Leaderboard" align="right" {% ifequal current_page "leaderboard" %}selected="true"{% endifequal %}/>
 </fb:tabs>
 
 <div style="padding: 5px;">
