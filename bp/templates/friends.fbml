@@ -1,0 +1,41 @@
+{% extends "base.fbml" %}
+
+{% block content %}
+<div class="clearfix">
+    <h1>My Friends' Standings</h1>
+    <br clear="all">
+    <table border="1" cellpadding="10">
+    <thead style="text-align: center; font-size: 1.3em;">
+        <tr>
+            <th>Name</th>
+            <th>Trade</th>
+            <th>Portfolio Value</th>
+            <th>Cash</th>
+            <th>Total Net Worth</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for fuid in friends %}
+        {% comment %}
+        <fb:if-is-user uid="{{ fuid }}"><tr style="background-color: rgb(255, 238, 187);"><fb:else><tr></fb:else></fb:if-is-user>
+        {% endcomment %}
+        {% ifequal uid fuid %}
+        <tr style="background-color: rgb(255, 238, 187);">
+        {% else %}
+        <tr>
+        {% endifequal %}
+        <td style="text-align: center; font-weight: bold;">
+            <fb:profile-pic uid="{{ fuid }}" size="small" />
+            <br clear="all">
+            <fb:name uid="{{ fuid }}" linked="false" useyou="false" />
+        </td>
+        <td style="font-weight: bold;">Trade</td>
+        <td style="font-weight: bold;">$xx</td>
+        <td style="font-weight: bold;">$xx</td>
+        <td style="font-weight: bold; font-size: 1.5em;">$xx</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+    </table>
+  </div>
+{% endblock %}
