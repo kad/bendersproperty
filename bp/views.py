@@ -33,17 +33,15 @@ def canvas(request):
         user.language = request.POST['language'][:64]
         user.save()
 
-    friends = request.facebook.friends.getAppUsers()
-
     # User is guaranteed to be logged in, so pass canvas.fbml
     # an extra 'fbuser' parameter that is the User object for
     # the currently logged in user.
-    return direct_to_template(request, 'canvas.fbml', extra_context={'fbuser': user, 'friends': friends })
+    return direct_to_template(request, 'canvas.fbml', extra_context={'fbuser': user, 'current_page': 'summary' })
 
 @facebook.require_login()
 def index(request):
     # Default page
-    return direct_to_template(request, 'index.fbml', extra_context={'uid': request.facebook.uid})
+    return direct_to_template(request, 'index.fbml', extra_context={'uid': request.facebook.uid, 'current_page': 'index'})
 
 @facebook.require_login()
 def invite(request):
@@ -53,9 +51,15 @@ def invite(request):
         friends = []
 
     return direct_to_template(request, 'invite.fbml',
-        extra_context={'uid': request.facebook.uid, 'friends': friends, 'add_url': request.facebook.get_add_url(), })
+        extra_context={'uid': request.facebook.uid, 'friends': friends, 'add_url': request.facebook.get_add_url(), 'current_page': 'invite'})
 
 @facebook.require_login()
 def help(request):
-    return direct_to_template(request, 'help.fbml')
+    return direct_to_template(request, 'help.fbml', extra_context={'current_page': 'help'})
+
+@facebook.require_login()
+def friends(request):
+    ufriends = request.facebook.friends.getAppUsers()
+    ufriends.append(request.facebook.uid)
+    return direct_to_template(request, 'friends.fbml', extra_context={'current_page': 'friends', 'friends': ufriends, 'uid': request.facebook.uid })
 

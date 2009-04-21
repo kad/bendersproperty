@@ -7,7 +7,8 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('bendersproperty.bp.views',
     (r'^$', 'index'),
-    (r'^summary|land_marketplace|property_marketplace|charts|friends|leaderboard$', 'canvas'),
+    (r'^summary|land_marketplace|property_marketplace|charts|leaderboard$', 'canvas'),
+    (r'^friends$', 'friends'),
     (r'^invite$', 'invite'),
     (r'^help$', 'help'),
     # Define other pages you want to create here
