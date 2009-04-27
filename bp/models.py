@@ -12,6 +12,8 @@ from facebook.djangofb import get_facebook_client
 from django.db.models.fields import PositiveIntegerField
 from django.conf import settings
 
+from datetime import datetime
+
 class BigPositiveIntegerField(PositiveIntegerField):
     empty_strings_allowed=False
     def get_internal_type(self):
@@ -23,28 +25,46 @@ class BigPositiveIntegerField(PositiveIntegerField):
         else:
             return 'bigint unsigned'
 
-class UserManager(models.Manager):
+class FBUserManager(models.Manager):
     """Custom manager for a Facebook User."""
 
     def get_current(self):
-        """Gets a User object for the logged-in Facebook user."""
+        """Gets a FBUser object for the logged-in Facebook user."""
         facebook = get_facebook_client()
         user, created = self.get_or_create(id=int(facebook.uid))
         if created:
             # we could do some custom actions for new users here...
+            user.hours = 6
+            user.last_reset = datetime.now()
+            user.last_rent_collected = datetime.now()
             pass
         return user
 
-class User(models.Model):
+class Trade(models.Model):
+    """ Trades (Builder/Plumber/Electrican/Plasterer/Decorator) """
+    name = models.CharField(blank=False, unique=True)
+
+
+class FBUser(models.Model):
     """A simple User model for Facebook users."""
+    # Add the custom manager
+    objects = FBUserManager()
 
     # We use the user's UID as the primary key in our database.
     id = BigPositiveIntegerField(primary_key=True)
 
-    # TODO: The data that you want to store for each user would go here.
-    # For this sample, we let users let people know their favorite progamming
-    # language, in the spirit of Extended Info.
-    language = models.CharField(default='Python', max_length=64)
+    cash = BigPositiveIntegerField(default=35000)
 
-    # Add the custom manager
-    objects = UserManager()
+    trade = models.ForeignKey(Trade)
+
+    exp_builder = models.IntegerField(default=0)
+    exp_plumber = models.IntegerField(default=0)
+    exp_electrician = models.IntegerField(default=0)
+    exp_plasterer = models.IntegerField(default=0)
+    exp_decorator = models.IntegerField(default=0)
+
+    hours = models.IntegerField(default=6)
+    last_reset = models.DateTimeField()
+    last_rent_collected = models.DateTimeField()
+
+
