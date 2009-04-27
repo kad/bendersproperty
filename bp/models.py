@@ -54,8 +54,10 @@ class FBUser(models.Model):
     id = BigPositiveIntegerField(primary_key=True)
 
     cash = BigPositiveIntegerField(default=35000)
+    last_rent_collected = models.DateTimeField()
 
     trade = models.ForeignKey(Trade)
+    hour_rate = models.IntegerField(default=0)
 
     exp_builder = models.IntegerField(default=0)
     exp_plumber = models.IntegerField(default=0)
@@ -64,7 +66,7 @@ class FBUser(models.Model):
     exp_decorator = models.IntegerField(default=0)
 
     hours = models.IntegerField(default=6)
+    reserved_hours = models.IntegerField(default=0)
     last_reset = models.DateTimeField()
-    last_rent_collected = models.DateTimeField()
 
 
