@@ -2,5 +2,60 @@
 
 {% block content %}
 <h1>Playing <fb:application-name linked="false"/></h1> <br> <br>
+    
+<h2>Overview </h2>
+<p><fb:application-name linked="false"/> is a game in which players compete to build a property portfolio of the highest value.<br></p>
+<p>The game has two units of currency - cash (dollars) and time (hours). Most tasks that can be completed require spending either cash, time, or both.<br></p>
+<p>When you have no more time available, you must wait until your hours are reset before you can continue. Every player has 24 hours per day, split into four periods of six hours each.<br></p>
+<p>In deciding how best to spend your time and cash within the game, you may construct new property, rent your property, sell your property to other players, and purchase property from other players.<br></p>
+<p>The combined value of your property portfolio and cash in your account (your "total net worth") will determine your ranking within the game. <br></p>
+<h2>Game Play <br></h2>
+<p>Upon entering the game for the first time, you must choose your trade. You can choose from one of the following: <br>
+</p>
+<ul>
+  <li>Builder </li>
+  <li>Plumber </li>
+  <li>Electrician </li>
+  <li>Plasterer </li>
+  <li>Decorator </li>
+</ul>
+<p>There are a number of ways to make money in the game, as described below. <br>
+  </p>
+<h2>Building </h2>
+<p>The first way to make money is to start by building a new property. In order to do this, you must first purchase land, and then you must hire tradesmen to build the property. Purchase land from the Land Marketplace tab.</p>
+<p>There are a number of property types available, and each type requires a certain type of land, and a certain number of hours work from each trade. Property falls into two different classes - Residential (apartments, houses etc), and Tourist (hotels, bed &amp; breakfast etc). </p>
+<p>There are also two classes of land available - Greenfield sites and Brownfield sites. Brownfield sites are cheaper, but are also prone to environmental disasters which could affect your property's value!</p>
+<p>Properties must be built in the correct order. First, a Builder must be hired to build the shell of the property. When they have finished, you must then hire the other trades to complete your property. You may decide to carry out your own trade yourself, instead of hiring in someone to do the work. </p>
+<p>Once the property is fully built can it be rented out. The rental value is fixed for each property type, but is affected by a number of factors (see below). </p>
+<p>Be sure to collect your rent every day from the Summary page. Rent that you do not collect is <em>not</em> carried over and will be lost!</p>
+<p>You may list your property for sale at any stage during construction. The game will suggest a valuation for each property based on the type of property and it's stage of construction, but you may set your own price. <br>
+</p>
+<p>There is no limit to the number of properties you can own. </p>
+<h2>Buying &amp; Selling</h2>
+<p>You may prefer to purchase properties that have already been completed by other players.  Properties need not be completed to be available for purchase - part-built properties can be purchased. You can complete construction work on these, then either rent them, or sell them on at a profit.<br>
+</p>
+<p>Find properties for sale by going to the Property Marketplace tab.<br>
+  <br>
+  You may list your property for sale at any stage of construction - including just a plot of land with no building work started. To list your property for sale, go to your Property Portfolio page.<br>
+</p>
+<p>Every property has a standard valuation based on the type of property it is, and it's stage of completion. However, you are not obliged to use this valuation, you may list your property for sale at any price you choose, keeping the market competitive. <br>
+</p>
+<h2>Working </h2>
+<p>You may generate additional income by selling your time (hours) to other players in the Trade Marketplace. Each trade has the same basic hourly rate, but you may choose to set your own rate to try and undercut the competition.</p>
+<p>Note that if another player hires you, the hours of work they purchase will be deducted from your time allowance. So you may want to ensure you only list yourself for hire when you are not around to be spending your time allowance building, buying, or selling!</p>
+<h2>Events </h2>
+<p>There are certain events which may occur during the game, which will affect the price of property:<br>
+</p>
+<p><strong>Daily House Price Index </strong></p>
+<p>Every 24 hours the Daily House Price index is published. This index increases or decreases the value of every property. You can see the House price Index on the Summary page.</p>
+<p><strong>Daily Rental Index </strong></p>
+<p>Rental prices for Residential Class property are affected by the Rental Price Index, which is also published daily.<br>
+</p>
+<p><strong>Daily Tourist Index </strong></p>
+<p>Rental prices for Tourist Class property are affected by the Daily Tourist Index.<br>
+</p>
+<p><strong>Decorative Order </strong></p>
+<p>When any property is first completed, it is in full decorative order. However, the decorative order of every property decreases over time. Rental values are negatively affected by bad decorative order, so you may need to hire a decorator from time to time, to bring your properties back up to scratch. You can check the decorative order of your properties on your Property Portfolio page.</p>
+    
 {% endblock %}
 
