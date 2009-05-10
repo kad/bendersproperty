@@ -78,7 +78,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'bendersproperty.fbapp',
+    'bendersproperty.bp',
 )
 
 FACEBOOK_API_KEY=''
