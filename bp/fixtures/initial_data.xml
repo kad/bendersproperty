@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<django-objects version="1.0">
+    <object pk="1" model="bp.trade">
+        <field type="CharField" name="name">Builder</field>
+    </object>
+    <object pk="2" model="bp.trade">
+        <field type="CharField" name="name">Plumber</field>
+    </object>
+    <object pk="3" model="bp.trade">
+        <field type="CharField" name="name">Electrican</field>
+    </object>
+    <object pk="4" model="bp.trade">
+        <field type="CharField" name="name">Plasterer</field>
+    </object>
+    <object pk="5" model="bp.trade">
+        <field type="CharField" name="name">Decorator</field>
+    </object>
+</django-objects>
