@@ -11,8 +11,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 #from bendersproperty.fb.models import User
-from bendersproperty.bp.models import User
-admin.site.register(User)
+from bendersproperty.bp.models import FBUser
+admin.site.register(FBUser)
 
 urlpatterns = patterns('',
     # Example:
