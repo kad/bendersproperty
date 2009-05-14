@@ -2,4 +2,6 @@
 
 {% block content %}
   Welcome, <fb:name uid="{{ uid }}" firstnameonly="true" useyou="false" />!
+  <br/>
+  {{ obj|pprint }}
 {% endblock %}
