@@ -34,16 +34,15 @@ class FBUserManager(models.Manager):
         user, created = self.get_or_create(id=int(facebook.uid))
         if created:
             # we could do some custom actions for new users here...
-            user.hours = 6
-            user.last_reset = datetime.now()
-            user.last_rent_collected = datetime.now()
             pass
         return user
 
 class Trade(models.Model):
     """ Trades (Builder/Plumber/Electrican/Plasterer/Decorator) """
-    name = models.CharField(blank=False, unique=True)
+    name = models.CharField(blank=False, unique=True, max_length=32)
 
+    def __unicode__(self):
+        return self.name
 
 class FBUser(models.Model):
     """A simple User model for Facebook users."""
@@ -52,21 +51,63 @@ class FBUser(models.Model):
 
     # We use the user's UID as the primary key in our database.
     id = BigPositiveIntegerField(primary_key=True)
-
+    # Timestamp when user added application
+    app_added = models.DateTimeField(default=datetime.now)
+    # User's cash
     cash = BigPositiveIntegerField(default=35000)
-    last_rent_collected = models.DateTimeField()
+    value = BigPositiveIntegerField(default=0)
+    # Last time when user collected rent
+    last_rent_collected = models.DateTimeField(default=datetime.now)
 
-    trade = models.ForeignKey(Trade)
+    trade = models.ForeignKey(Trade, null=True, blank=True, default=None)
     hour_rate = models.IntegerField(default=0)
+    hours = models.FloatField(default=6)
+    reserved_hours = models.IntegerField(default=0)
+    last_reset = models.DateTimeField(default=datetime.now)
 
+    # Collected expirience
     exp_builder = models.IntegerField(default=0)
     exp_plumber = models.IntegerField(default=0)
     exp_electrician = models.IntegerField(default=0)
     exp_plasterer = models.IntegerField(default=0)
     exp_decorator = models.IntegerField(default=0)
 
-    hours = models.IntegerField(default=6)
-    reserved_hours = models.IntegerField(default=0)
-    last_reset = models.DateTimeField()
+    max_cache = BigPositiveIntegerField(default=35000)
+    max_value = BigPositiveIntegerField(default=0)
 
+    def __unicode__(self):
+        return u'%d' % self.id
+
+class LandRegion(models.Model):
+    """ Land region Downtown/Suburbs/Beachfront/Countryside/Desert/Industrial """
+    name = models.CharField(blank=False, unique=True, max_length=32)
+
+    def __unicode__(self):
+        return self.name
+
+class PropertyType(models.Model):
+    """ Property type: rental/tourist/commercial """
+    name = models.CharField(blank=False, unique=True, max_length=32)
+
+    def __unicode__(self):
+        return self.name
+
+class PropertyKind(models.Model):
+    """ What kind of property do we have """
+    name = models.CharField(blank=False, unique=True, max_length=64)
+    size = models.IntegerField(default=0, blank=False, null=False)
+    region = models.ForeignKey(LandRegion, blank=False, null=False)
+    type = models.ForeignKey(PropertyType, blank=False, null=False)
+    cost = models.IntegerField(default=0, blank=False, null=False)
+    rent = models.IntegerField(default=0, blank=False, null=False)
+    value = models.IntegerField(default=0, blank=False, null=False)
+
+    require_builder = models.IntegerField(default=0, blank=False, null=False)
+    require_plumber = models.IntegerField(default=0, blank=False, null=False)
+    require_electrician = models.IntegerField(default=0, blank=False, null=False)
+    require_plasterer = models.IntegerField(default=0, blank=False, null=False)
+    require_decorator = models.IntegerField(default=0, blank=False, null=False)
+
+    def __unicode__(self):
+        return self.name
 
