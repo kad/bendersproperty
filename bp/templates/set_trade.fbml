@@ -1,0 +1,16 @@
+{% extends "base.fbml" %}
+
+{% block content %}
+<div style="padding: 5px;">
+    <fb:explanation>
+    <fb:message>Select Your Trade</fb:message>  
+    Choose which specialism you would like to have in the game. You need to have a trade to play. The available trades and the number of players are shown below. After your initial choice, changing specialism costs 1 hour.
+    <br /><br />
+    <ul>
+    {% for trade in trades %}
+        <li style="font-weight: bold;"><a href="set_trade?trade={{ trade.id }}">{{ trade.name }}</a> - {{ trade.fbuser_set.count }} <br/> </li>
+    {% endfor %}
+    </ul>
+    </fb:explanation>
+</dir>
+{% endblock %}
