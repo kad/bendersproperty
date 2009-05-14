@@ -15,4 +15,31 @@
     <object pk="5" model="bp.trade">
         <field type="CharField" name="name">Decorator</field>
     </object>
+    <object pk="1" model="bp.propertytype">
+        <field type="CharField" name="name">Rental</field>
+    </object>
+    <object pk="2" model="bp.propertytype">
+        <field type="CharField" name="name">Tourist</field>
+    </object>
+    <object pk="3" model="bp.propertytype">
+        <field type="CharField" name="name">Commercial</field>
+    </object>
+    <object pk="1" model="bp.landregion">
+        <field type="CharField" name="name">Downtown</field>
+    </object>
+    <object pk="2" model="bp.landregion">
+        <field type="CharField" name="name">Suburbs</field>
+    </object>
+    <object pk="3" model="bp.landregion">
+        <field type="CharField" name="name">Beachfront</field>
+    </object>
+    <object pk="4" model="bp.landregion">
+        <field type="CharField" name="name">Countryside</field>
+    </object>
+    <object pk="5" model="bp.landregion">
+        <field type="CharField" name="name">Industrial</field>
+    </object>
+    <object pk="6" model="bp.landregion">
+        <field type="CharField" name="name">Desert</field>
+    </object>
 </django-objects>
