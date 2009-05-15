@@ -78,10 +78,16 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
     'bendersproperty.bp',
 )
 
 FACEBOOK_API_KEY=''
 FACEBOOK_SECRET_KEY=''
 
+try:
+    from ov_settings import *
+except ImportError:
+    pass
 

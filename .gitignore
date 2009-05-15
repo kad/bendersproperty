@@ -2,3 +2,4 @@
 *.pyc
 *.db
 *.swp
+ov_settings.py
