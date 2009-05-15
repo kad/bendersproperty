@@ -48,6 +48,7 @@ MEDIA_URL = ''
 ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
+# KAD: define own for production
 SECRET_KEY = '&1a(5w=+i=e2so+=h#(&ukdk0!9g_l$1(lf)l_o&@iy0p=-vyj'
 
 # List of callables that know how to import templates from various sources.
@@ -77,15 +78,10 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'django.contrib.admin',
-    'django.contrib.admindocs',
     'bendersproperty.bp',
 )
 
 FACEBOOK_API_KEY=''
 FACEBOOK_SECRET_KEY=''
 
-try:
-    from ov_settings import *
-except ImportError:
-    pass
+
