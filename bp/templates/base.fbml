@@ -1,23 +1,51 @@
+<style type="text/css">
+.right { float: right; }
+.left { float: left; }
+.center { text-align: center; }
+.middle { vertical-align: middle; }
+.bottom { vertical-align: bottom; }
+.full { border: medium none #ffffff; margin: 0px; padding: 0px; width: 100%; }
+.userstatustop { border-top: 1px solid #cccccc; border-left: 0px solid #cccccc; border-right: 0px solid #cccccc; text-align: center; padding-bottom: 20px; }
+.userstatustop td { border-left: 1px solid #c8cfda; border-right: 1px solid #c8cfda; border-bottom: 1px solid #c8cfda; padding: 5px 10px; margin-top: 5px; background-color: #f7f7f7; color: #3b5998; font-weight: bold; }
+.userstatustop img { vertical-align: bottom; }
+.userstatus { text-align: center; padding-top: 0px; }
+.userstatusbottom { border-bottom: 0px solid #cccccc; border-left: 0px solid #cccccc; border-right: 0px solid #cccccc; text-align: center; padding-top: 0px; }
+.userstatus td { border-left: 1px solid #c8cfda; border-right: 1px solid #c8cfda; border-top: 1px solid #c8cfda; padding: 5px 10px; margin-bottom: 5px; background-color: #f7f7f7; color: #3b5998; font-weight: bold; }
+.userstatus img { vertical-align: bottom; }
+.pagediv h1 { border-bottom:1px solid #CCCCCC; font-weight:bold; color: #333333; padding-top: 15px; display:block; margin:0; }
+.tableth { background-color:#D8DFEA; border-top:1px solid #3B5998; color: #3B5998; margin:0; font-weight:bold; }
+.friendtable { border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; border-top:1px solid #94A3C4; margin-top:10px; }
+</style>
 <fb:dashboard>
-  <fb:action href="http://www.facebook.com/apps/application.php?id=70364136730">About <fb:application-name linked="false"/></fb:action>
-  <fb:action href="invite">Invite Friends</fb:action>
-  {% comment %}
-  <fb:action href="monetize">Paid services</fb:action>
-  {% endcomment %}
-  <fb:help href="help">Help and Manual</fb:help>
-  {% block dashboard %}{% endblock %}
+  <fb:action href="summary"><img class="bottom" src="{{ mediaurl }}icons/house.png"> <fb:application-name linked="false"/></fb:action>
+  <fb:action href="invite"><img class="bottom" src="{{ mediaurl }}icons/group_add.png"> Invite Friends</fb:action>
+  <fb:action href="friends"><img class="bottom" src="{{ mediaurl }}icons/group.png"> Friends</fb:action>
+  <fb:action href="leaderboard"><img class="bottom" src="{{ mediaurl }}icons/award_star_gold_1.png"> Top players</fb:action/>
+  <fb:action href="charts"><img class="bottom" src="{{ mediaurl }}icons/chart_curve.png"> Charts</fb:action/>
+  <fb:help href="http://www.facebook.com/apps/application.php?id=70364136730"><img class="bottom" src="{{ mediaurl }}icons/application_home.png"> About</fb:help>
+  <fb:help href="help"><img class="bottom" src="{{ mediaurl }}icons/help.png"> Help</fb:help>
 </fb:dashboard>
 
-<fb:tabs>
- <fb:tab_item href="summary" title="My Summary" {% ifequal current_page "summary" %}selected="true"{% endifequal %}/>
- <fb:tab_item href="land_marketplace" title="Land Marketplace" {% ifequal current_page "land_marketplace" %}selected="true"{% endifequal %}/>
- <fb:tab_item href="property_marketplace" title="Property Marketplace" {% ifequal current_page "property_marketplace" %}selected="true"{% endifequal %}/>
- {% block tabs %}{% endblock %}
- <fb:tab_item href="charts" title="Charts" align="right" {% ifequal current_page "charts" %}selected="true"{% endifequal %}/>
- <fb:tab_item href="friends" title="My Friends" align="right" {% ifequal current_page "friends" %}selected="true"{% endifequal %}/>
- <fb:tab_item href="leaderboard" title="Leaderboard" align="right" {% ifequal current_page "leaderboard" %}selected="true"{% endifequal %}/>
-</fb:tabs>
+{% if fbuser %}
+<div class="userstatus">
+<center><table cellspacing="0" cellpadding="0">
+<tbody><tr>
+{% comment %}
+<td><a href="summary"><img src="{{ mediaurl }}icons/house.png"></a></td>
+{% endcomment %}
+<td><a href="portfolio"><img src="{{ mediaurl }}icons/building.png"> Value: <span style="color: green">${{ fbuser.value }}</span></a></td>
+<td><a href="market"><img src="{{ mediaurl }}icons/coins.png"> Cash: <span style="color: green">${{ fbuser.cash }}</span></a></td>
+<td><a href="build"><img src="{{ mediaurl }}icons/money.png"> Income: <span style="color: green">$xxx</span></a></td>
+<td><a href="hour_rate"<img src="{{ mediaurl }}icons/clock{% if not fbuser.hours %}_red{% endif %}.png"> Hours: <span style="color: {% if fbuser.hours %}green{% else %}red{% endif %}">{{ fbuser.hours }}</span>{% if fbuser.hour_rate %} <img src="{{ mediaurl }}icons/wrench.png"> <span style="color: green">${{ fbuser.hour_rate }}{% endif %}</span></a></td>
+{% if fbuser.trade_id %}<td><a href="set_trade"><img src="{{ mediaurl }}icons/{{ fbuser.trade.icon }}"> {{ fbuser.trade.name }}</a></td>{% endif %}
+</tr>
+</tbody></table>
+</center>
+</div>
+{% endif %}
 
-<div style="padding: 5px;">
+<div style="padding: 5px; background-color: #f7f7f7; border: 1px solid #cccccc;">
 {% block content %}{% endblock %}
 </div>
+
+
