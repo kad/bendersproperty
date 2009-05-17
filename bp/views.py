@@ -3,8 +3,8 @@
 # This file is part of Bender's Property
 # Copyright (C) 2009 Bender's Property development team. All rights reserved.
 #
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
-from django.views.generic.simple import direct_to_template, redirect_to
+from django.http import HttpResponse
+from django.views.generic.simple import direct_to_template
 from django.conf import settings
 
 # Import the Django helpers
@@ -13,13 +13,49 @@ from facebook import FacebookError
 
 # The User model defined in models.py
 from models import FBUser, Trade
+from pprint import pprint
 
 @facebook.require_login()
 def ajax(request):
     return HttpResponse('hello world')
 
-def app_base_path(request):
-    return request.path[:request.path.find('/',1)+1]
+def post_remove(request):
+    # Callback when user removes app
+    print "Request:"
+    pprint(request.REQUEST.items())
+    print "FB:"
+    pprint(request.facebook.__dict__)
+    return HttpResponse('hello world')
+
+def post_auth(request):
+    # Callback when user adds app
+    print "Request:"
+    pprint(request.REQUEST.items())
+    print "FB:"
+    pprint(request.facebook.__dict__)
+    return HttpResponse('hello world')
+
+
+def default_context():
+    user = FBUser.objects.get_current()
+    return {'fbuser': user, 'mediaurl': settings.MEDIA_URL }
+
+def render_game_page(request, template, extra_context=None, mimetype=None, **kwargs):
+    """ Same as direct_to_template, but adds defaults to context if not there """
+    if not extra_context:
+        extra_context = {}
+    if 'mediaurl' not in extra_context:
+        extra_context['mediaurl'] = settings.MEDIA_URL
+    return direct_to_template(request, template, extra_context=extra_context, mimetype=mimetype, **kwargs)
+
+def render_game_userpage(request, template, extra_context=None, mimetype=None, **kwargs):
+    """ Same as direct_to_template, but add fbuser to context if not there """
+    if not extra_context:
+        extra_context = {}
+    if 'fbuser' not in extra_context:
+        extra_context['fbuser'] = FBUser.objects.get_current()
+    return render_game_page(request, template, extra_context=extra_context, mimetype=mimetype, **kwargs)
+
 
 # We'll require login for our canvas page. This
 # isn't necessarily a good idea, as we might want
@@ -31,18 +67,17 @@ def canvas(request):
     # Get the User object for the currently logged in user
     user = FBUser.objects.get_current()
 
-    # Check if we were POSTed the user's new language of choice
-    #if 'language' in request.POST:
-    #    user.language = request.POST['language'][:64]
-    #    user.save()
-
     # User is guaranteed to be logged in, so pass canvas.fbml
     # an extra 'fbuser' parameter that is the User object for
     # the currently logged in user.
-    return direct_to_template(request, 'canvas.fbml', extra_context={'fbuser': user, 'current_page': 'land_market' })
+    return render_game_userpage(request, 'canvas.fbml')
 
 @facebook.require_login()
 def dump(request):
+    print "Request:"
+    pprint(request.REQUEST.items())
+    print "FB:"
+    pprint(request.facebook.__dict__)
     # Default page
     try:
         #obj = request.facebook.application.getPublicInfo(application_id=26646015029)
@@ -55,39 +90,41 @@ def dump(request):
         #obj = request.facebook.friends.getLists()
         #obj = request.facebook.friends.get(flid=105202265658L)
         #obj = FBUser.objects.get_current()
-        obj = request.REQUEST.items()
+        #obj = request.REQUEST.items()
+        #obj = request.facebook.__dict__
+        obj = request.META['HTTP_HOST']
     except Exception, exj:
         obj = str(exj.__class__)+str(exj)
     #obj = None
-    return direct_to_template(request, 'dump.fbml', extra_context={'uid': request.facebook.uid, 'current_page': 'index', 'obj': obj })
+    return render_game_page(request, 'dump.fbml', extra_context={'uid': request.facebook.uid, 'obj': obj })
 
 @facebook.require_login()
 def index(request):
-    return HttpResponseRedirect('summary')
+    # Do something better later
+    return request.facebook.redirect('summary')
 
 @facebook.require_login()
 def summary(request):
     user = FBUser.objects.get_current()
     if not user.trade:
-        return HttpResponseRedirect('set_trade')
-    return direct_to_template(request, 'summary.fbml', extra_context={'uid': request.facebook.uid, 'current_page': 'index', 'fbuser': user })
-
+        #return HttpResponseRedirect('set_trade')
+        return request.facebook.redirect('set_trade')
+    return render_game_userpage(request, 'summary.fbml', extra_context={'uid': request.facebook.uid, 'fbuser': user})
 
 @facebook.require_login()
 def set_trade(request):
     user = FBUser.objects.get_current()
-    if 'trade' not in request.GET:
-        return direct_to_template(request, 'set_trade.fbml', extra_context={'uid': request.facebook.uid, 'current_page': 'set_trade', 'trades': Trade.objects.order_by('id') })
-    elif not user.trade:
+    pprint(request.REQUEST.items())
+    if 'trade' not in request.REQUEST:
+        return render_game_userpage(request, 'set_trade.fbml', extra_context={'uid': request.facebook.uid, 'trades': Trade.objects.order_by('id')})
+    #elif not user.trade:
+    elif True:
         try:
-            user.trade = Trade.objects.get(pk=int(request.GET['trade']))
+            user.trade = Trade.objects.get(pk=int(request.REQUEST['trade']))
             user.save()
         except Trade.DoesNotExist, exc:
             pass
-    #return redirect_to(request, app_base_path(request))
-    return HttpResponseRedirect(app_base_path(request))
-    #return HttpResponsePermanentRedirect(app_base_path(request))
-
+    return request.facebook.redirect(request.facebook.get_app_url())
 
 @facebook.require_login()
 def invite(request):
@@ -95,17 +132,16 @@ def invite(request):
         friends = request.facebook.friends.getAppUsers()
     except FacebookError, exc:
         friends = []
-
-    return direct_to_template(request, 'invite.fbml',
-        extra_context={'uid': request.facebook.uid, 'friends': friends, 'add_url': request.facebook.get_add_url(), 'current_page': 'invite'})
+    return render_game_page(request, 'invite.fbml',
+        extra_context={'uid': request.facebook.uid, 'friends': friends, 'add_url': request.facebook.get_add_url()})
 
 @facebook.require_login()
 def help(request):
-    return direct_to_template(request, 'help.fbml', extra_context={'current_page': 'help'})
+    return render_game_page(request, 'help.fbml')
 
 @facebook.require_login()
 def friends(request):
-    ufriends = request.facebook.friends.getAppUsers()
-    ufriends.append(request.facebook.uid)
-    return direct_to_template(request, 'friends.fbml', extra_context={'current_page': 'friends', 'friends': ufriends, 'uid': request.facebook.uid })
+    ufriends = [] + request.facebook.friends.getAppUsers() + [request.facebook.uid]
+    ofriends = FBUser.objects.filter(id__in=ufriends).order_by("-value")
+    return render_game_userpage(request, 'friends.fbml', extra_context={'friends': ofriends, 'uid': request.facebook.uid })
 
