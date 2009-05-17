@@ -1,8 +1,82 @@
 {% extends "base.fbml" %}
 
 {% block content %}
-<div class="clearfix">
-  <br /><br />
-  Welcome, <fb:name uid="{{ fbuser.id }}" firstnameonly="true" useyou="false" />!
+<style type="text/css">
+#footer { clear: both; text-align: center; }
+#quotelist { float: right; width: 260px; }
+#title { float: left; width: 120px; color: gray; }
+.attrib { display: block; clear: both; }
+.author, .multiauthor { color: #3b5998; }
+.center { text-align: center; }
+.column { width: 45%; }
+.comment, .remove { white-space: nowrap; }
+.full { border: medium none #ffffff; margin: 0px; padding: 0px; width: 100%; }
+.greypanel { border: 1px solid #f7f7f7; background: #f7f7f7 none repeat scroll 0% 0%; width: 644px; }
+.indquote { margin-bottom: 10px; }
+.innerbox { border: 0px solid white; margin: 10px 20px; width: 606px; }
+.left { float: left; }
+.middle { vertical-align: middle; }
+.multiattrib { display: block; clear: both; }
+.multidiv { margin-right: 3px; }
+.multiline .quotemark { display: none; }
+.multiline { display: block; clear: both; }
+.multinote { font-style: italic; }
+.multinote, .note { font-style: italic; }
+.multiquote .quotemark { display: none; }
+.note, .multinote { font-style: italic; }
+.notediv { margin-right: 3px; }
+.numquotes { padding-top: 3px; }
+.popquote .attrib .notediv { margin-right: 3px; }
+.popquote .multidiv { margin-right: 3px; }
+.popquote .multiline .quotemark { display: none; }
+.popquote .quote, .popquote .multiline { display: block; }
+.popquote { border: 1px solid #cccccc; margin: 5px 0px; padding: 5px; background: #eeeeee none repeat scroll 0% 0%; clear: both; }
+.popup { border: 5px solid #0e1f5b; padding: 5px; background: #ffffff none repeat scroll 0% 0%; width: 400px; float: right; position: absolute; left: 50%; margin-left: -200px; top: 200px; }
+.quotebox { border: 1px solid #cccccc; margin: 5px 0px; padding: 5px 10px; background: #ffffff none repeat scroll 0% 0%; }
+.quotefooter { border-top: 1px solid #cccccc; padding: 5px 0px 0px; text-align: center; }
+.quotetd { border: medium none #ffffff; padding: 0px 0px 2px; }
+.remove, .comments { margin-left: 3px; font-size: 80%; }
+.right { float: right; }
+.sendrect { border: medium none #ffffff; margin: 0px 5px; vertical-align: top; }
+.sharetable { border: 0px none #ffffff; margin: 0px 20px; padding: 0px; }
+.small { font-size: 80%; }
+.tdleft { padding-right: 5px; width: 15px; text-align: center; }
+.tdmid {  }
+.tdright { padding-left: 5px; width: 15px; text-align: center; }
+.tight { border: medium none #ffffff; margin: 0px; }
+.underline { border-bottom: 1px solid #3b5998; }
+.warning { color: red; font-weight: bold; }
+.wrapper { border-bottom: 1px solid #3b5998; padding: 0px 20px; }
+.wrapper { padding: 0px 20px; }
+</style>
+
+
+
+<div style='width:175px;background:#EEEEEE;float:right;'>
+    <div style='width:155px;margin:10px;'>
+    <!-- Sidebar Content Here -->
+        <div style='clear:both;font-weight:bold;background:#F7F7F7;border:1px solid #CCCCCC;margin:10px;text-align:center;padding:5px;'>
+            <span >Actions</span><br/>
+            <a href='/favorite.php?qid=$qid'><img src='http://ya.ru/images/fav_big.png' style='border:none;margin:0px;'>aaaa</a>
+            <a href='/delete.php?qid=$qid'><img src='http://ya.ru/images/delete_big.png' style='border:none;margin:0px;'>bbb</a>
+            <a href='/edit.php?qid=$qid'><img src='http://ya.ru/images/edit_big.png' style='border:none;margin:0px;'>cccc</a>
+        </div>
+        <div style='clear:both;' />
+    </div>
+</div>
+<div style='padding:20px;'>
+    <div style='width:425px;float:left;'>
+        <!-- Main Content Here -->
+<div >
+<fb:dialog id="my_dialog"> <fb:dialog-title>My Little Dialog</fb:dialog-title> <fb:dialog-content><form id="my_form">Do you like my little dialog?</form></fb:dialog-content> <fb:dialog-button type="submit" value="Yes" clickrewriteurl="http://www.someurl.com/response.php" clickrewriteid="my_dialog" clickrewriteform="my_form" /> </fb:dialog> 
+<br /><br />
+    Welcome, <fb:name uid="{{ fbuser.id }}" firstnameonly="true" useyou="false" />!
+
+    </div>
+</div>
+</div>
+
+<div>
+
 </div>
 {% endblock %}
