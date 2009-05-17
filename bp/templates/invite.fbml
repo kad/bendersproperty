@@ -3,7 +3,6 @@
 {% block content %}
 <h1>Invite your friends!</h1>
 <br />
-{{ kaddebug|escape }}
 <fb:request-form action="." method="POST" invite="true" type="Bender's Property" content="{% filter force_escape %}
 <fb:name uid="{{ uid }}" firstnameonly="true" shownetwork="false"/> wants to invite you to play Bender's Property game.
 <fb:req-choice url="{{ add_url }}" label="Start playing!"/>
@@ -11,4 +10,3 @@
 <fb:multi-friend-selector max="20" actiontext="Here are your friends who aren't playing Bender's Property. Invite them to play Bender's Property today!" showborder="true" bypass="cancel" email_invite="false" exclude_ids="{{ friends|join:"," }}">
 </fb:request-form>
 {% endblock %}
-
