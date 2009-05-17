@@ -1,38 +1,37 @@
 {% extends "base.fbml" %}
 
 {% block content %}
+<style type="text/css">
+</style>
 <div class="clearfix">
     <h1>My Friends' Standings</h1>
     <br clear="all">
-    <table border="1" cellpadding="10">
-    <thead style="text-align: center; font-size: 1.3em;">
+    <table class="full">
+    <thead style="text-align: center; font-size: 1.2em;">
         <tr>
-            <th>Name</th>
-            <th>Trade</th>
-            <th>Portfolio Value</th>
-            <th>Cash</th>
-            <th>Total Net Worth</th>
+            <th class="tableth">Name</th>
+            <th class="tableth">Trade</th>
+            <th class="tableth">Portfolio Value</th>
+            <th class="tableth">Cash</th>
+            <th class="tableth">Total Net Worth</th>
         </tr>
     </thead>
     <tbody>
-    {% for fuid in friends %}
-        {% comment %}
-        <fb:if-is-user uid="{{ fuid }}"><tr style="background-color: rgb(255, 238, 187);"><fb:else><tr></fb:else></fb:if-is-user>
-        {% endcomment %}
-        {% ifequal uid fuid %}
+    {% for friend in friends %}
+        {% ifequal fbuser.id friend.id %}
         <tr style="background-color: rgb(255, 238, 187);">
         {% else %}
         <tr>
         {% endifequal %}
-        <td style="text-align: center; font-weight: bold;">
-            <fb:profile-pic uid="{{ fuid }}" size="small" />
+        <td style="text-align: center; font-weight: bold; ">
+            <fb:profile-pic uid="{{ friend.id }}" size="small" />
             <br clear="all">
-            <fb:name uid="{{ fuid }}" linked="false" useyou="false" />
+            <fb:name uid="{{ friend.id }}" linked="false" useyou="false" />
         </td>
-        <td style="font-weight: bold;">Trade</td>
-        <td style="font-weight: bold;">$xx</td>
-        <td style="font-weight: bold;">$xx</td>
-        <td style="font-weight: bold; font-size: 1.5em;">$xx</td>
+        <td style="font-weight: bold; text-align: center">{{ friend.trade.name }}</td>
+        <td style="font-weight: bold; text-align: center">${{ friend.value }}</td>
+        <td style="font-weight: bold; text-align: center">${{ friend.cash }}</td>
+        <td style="font-weight: bold; text-align: center">${{ friend.total }}</td>
         </tr>
       {% endfor %}
     </tbody>
