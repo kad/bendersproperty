@@ -2,18 +2,23 @@
 <django-objects version="1.0">
     <object pk="1" model="bp.trade">
         <field type="CharField" name="name">Builder</field>
+        <field type="CharField" name="icon">user_orange.png</field>
     </object>
     <object pk="2" model="bp.trade">
         <field type="CharField" name="name">Plumber</field>
+        <field type="CharField" name="icon">user.png</field>
     </object>
     <object pk="3" model="bp.trade">
         <field type="CharField" name="name">Electrican</field>
+        <field type="CharField" name="icon">user_green.png</field>
     </object>
     <object pk="4" model="bp.trade">
         <field type="CharField" name="name">Plasterer</field>
+        <field type="CharField" name="icon">user_gray.png</field>
     </object>
     <object pk="5" model="bp.trade">
         <field type="CharField" name="name">Decorator</field>
+        <field type="CharField" name="icon">user_red.png</field>
     </object>
     <object pk="1" model="bp.propertytype">
         <field type="CharField" name="name">Rental</field>
