@@ -40,6 +40,7 @@ class FBUserManager(models.Manager):
 class Trade(models.Model):
     """ Trades (Builder/Plumber/Electrican/Plasterer/Decorator) """
     name = models.CharField(blank=False, unique=True, max_length=32)
+    icon = models.CharField(blank=False, max_length=32)
 
     def __unicode__(self):
         return self.name
