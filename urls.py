@@ -5,12 +5,12 @@
 #
 
 from django.conf.urls.defaults import *
+from django.conf import settings
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
-#from bendersproperty.fb.models import User
 from bendersproperty.bp.models import FBUser, Trade, LandRegion, PropertyType, PropertyKind
 for cls in (FBUser, Trade, LandRegion, PropertyType, PropertyKind):
     admin.site.register(cls)
@@ -25,4 +25,5 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/(.*)', admin.site.root),
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_FILES}),
 )
