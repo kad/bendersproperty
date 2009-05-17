@@ -14,5 +14,7 @@ urlpatterns = patterns('bendersproperty.bp.views',
     (r'^help$', 'help'),
     (r'^set_trade$', 'set_trade'),
     (r'^dump$', 'dump'),
+    (r'^post_remove$', 'post_remove'),
+    (r'^post_auth$', 'post_auth'),
     # Define other pages you want to create here
 )
