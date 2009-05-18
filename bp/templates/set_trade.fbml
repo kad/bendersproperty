@@ -1,6 +1,12 @@
 {% extends "base.fbml" %}
 
 {% block content %}
+<style type="text/css">
+.tab_header { border-top: 1px solid #3b5998; background-color: #d8dfea; color: #3b5998; }
+.tab_header { margin: 0px; padding: 2px 8px; font-size: 11px; font-weight: bold; }
+.panelBorder { border: 1px solid #b7b7b7; padding: 0pt; width: 175px; }
+.panelHeader { text-align: center; border-width: 1px; border-bottom: 1px solid #b7b7b7; padding: 3px 0px 3px 8px; color: white; font-size: 12px; background-color: #3b5998; }
+</style>
 <div style="padding: 5px;">
     <center>
     <table style="width: 90%"><tr>
@@ -15,11 +21,12 @@
     </td>
     <td style="width: 30%">
     <form method="post">
-    <table class="formtable">
+    <table class="formtable panelBorder" cellspacing="0">
+    <tr><td class="panelHeader">Available trades</td></tr>
     {% for trade in trades %}
         <tr>
-        <td><input class="inputradio" type="radio" id="trade_{{ trade.id }}" name="trade" value="{{ trade.id }}"{% ifequal fbuser.trade.id trade.id %} checked="checked"{% endifequal %}>
-        <label for="trade_{{ trade.id }}"><img style="vertical-align: bottom" src="{{ mediaurl }}icons/{{ trade.icon }}"> {{ trade.name }} - {{ trade.fbuser_set.count }}</label></td>
+        <td class="pad_right pad_left pad_top_xs pad_bottom_xs"><input class="inputradio" type="radio" id="trade_{{ trade.id }}" name="trade" value="{{ trade.id }}"{% ifequal fbuser.trade.id trade.id %} checked="checked"{% endifequal %}>
+        <label for="trade_{{ trade.id }}"><img style="vertical-align: bottom" src="{{ MEDIA_URL }}icons/{{ trade.icon }}"> {{ trade.name }} - {{ trade.fbuser_set.count }}</label></td>
         </tr>
     {% endfor %}
     <tr><td class="formbuttons"><input type="submit" value="Select trade" class="inputsubmit"/></td></tr>
