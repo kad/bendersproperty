@@ -30,9 +30,9 @@
             <fb:name uid="{{ friend.id }}" linked="false" useyou="false" />
         </td>
         <td style="font-weight: bold; text-align: center">{{ friend.trade.name }}</td>
-        <td style="font-weight: bold; text-align: right; padding: 10px">${{ friend.value|bp_numberfmt }}</td>
-        <td style="font-weight: bold; text-align: right; padding: 10px">${{ friend.cash|bp_numberfmt }}</td>
-        <td style="font-weight: bold; text-align: right; padding: 10px">${{ friend.total|bp_numberfmt }}</td>
+        <td style="font-weight: bold; text-align: right; padding: 10px">${{ friend.value|bp_numberfmt:locale }}</td>
+        <td style="font-weight: bold; text-align: right; padding: 10px">${{ friend.cash|bp_numberfmt:locale }}</td>
+        <td style="font-weight: bold; text-align: right; padding: 10px">${{ friend.total|bp_numberfmt:locale }}</td>
         </tr>
       {% endfor %}
     </tbody>

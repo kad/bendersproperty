@@ -60,11 +60,11 @@
 <div class="userstatus">
 <center><table cellspacing="0" cellpadding="0">
 <tbody><tr>
-<td><a href="portfolio"><img src="{{ MEDIA_URL }}icons/building.png"> <span style="color: green">${{ fbuser.value|bp_numberfmt }}</span></a></td>
-<td><a href="market"><img src="{{ MEDIA_URL }}icons/coins.png"> <span style="color: green">${{ fbuser.cash|bp_numberfmt }}</span></a></td>
-<td><a href="build"><img src="{{ MEDIA_URL }}icons/money.png"> <span style="color: green">${{ fbuser.rent|bp_numberfmt }}</span></a></td>
+<td><a href="portfolio"><img src="{{ MEDIA_URL }}icons/building.png"> <span style="color: green">${{ fbuser.value|bp_numberfmt:locale }}</span></a></td>
+<td><a href="market"><img src="{{ MEDIA_URL }}icons/coins.png"> <span style="color: green">${{ fbuser.cash|bp_numberfmt:locale }}</span></a></td>
+<td><a href="build"><img src="{{ MEDIA_URL }}icons/money.png"> <span style="color: green">${{ fbuser.rent|bp_numberfmt:locale }}</span></a></td>
 {% if fbuser.trade_id %}<td><a href="set_trade"><img src="{{ MEDIA_URL }}icons/{{ fbuser.trade.icon }}"> {{ fbuser.trade.name }}</a></td>{% endif %}
-{% if fbuser.hour_rate %}<td><a href="hour_rate"><img src="{{ MEDIA_URL }}icons/wrench.png"> <span style="color: green">${{ fbuser.hour_rate|bp_numberfmt }}/hour</span></a></td>{% endif %}
+{% if fbuser.hour_rate %}<td><a href="hour_rate"><img src="{{ MEDIA_URL }}icons/wrench.png"> <span style="color: green">${{ fbuser.hour_rate|bp_numberfmt:locale }}/hour</span></a></td>{% endif %}
 <td><a href="hour_rate"<img src="{{ MEDIA_URL }}icons/clock{% if not fbuser.hours %}_red{% endif %}.png"> Hours: <span style="color: {% if fbuser.hours %}green{% else %}red{% endif %}">{{ fbuser.hours }}</span></a></td>
 </tr>
 </tbody></table>
