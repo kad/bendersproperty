@@ -15,6 +15,10 @@ from facebook import FacebookError
 from models import FBUser, Trade
 from pprint import pprint
 
+from django.utils.translation import to_locale
+DEFAULT_LOCALE = to_locale(settings.LANGUAGE_CODE)
+
+
 @facebook.require_login()
 def ajax(request):
     return HttpResponse('hello world')
@@ -35,17 +39,12 @@ def post_auth(request):
     pprint(request.facebook.__dict__)
     return HttpResponse('hello world')
 
-
-def default_context():
-    user = FBUser.objects.get_current()
-    return {'fbuser': user, 'mediaurl': settings.MEDIA_URL }
-
 def render_game_page(request, template, extra_context=None, mimetype=None, **kwargs):
     """ Same as direct_to_template, but adds defaults to context if not there """
     if not extra_context:
         extra_context = {}
-    if 'mediaurl' not in extra_context:
-        extra_context['mediaurl'] = settings.MEDIA_URL
+    if 'locale' not in extra_context:
+        extra_context['locale'] = request.REQUEST.get('fb_sig_locale', DEFAULT_LOCALE)
     return direct_to_template(request, template, extra_context=extra_context, mimetype=mimetype, **kwargs)
 
 def render_game_userpage(request, template, extra_context=None, mimetype=None, **kwargs):
@@ -78,21 +77,21 @@ def dump(request):
     pprint(request.REQUEST.items())
     print "FB:"
     pprint(request.facebook.__dict__)
+    print "IP: %s for %s" % (request.META['REMOTE_ADDR'], request.META['HTTP_X_FB_USER_REMOTE_ADDR'])
     # Default page
     try:
         #obj = request.facebook.application.getPublicInfo(application_id=26646015029)
         #obj = request.facebook.application.getPublicInfo(application_id=70364136730)
-        #obj = request.facebook.application.getPublicInfo(application_canvas_name='property-ladder')
-        #obj = request.facebook.application.getPublicInfo(application_api_key='8ed20e0c7c6fce5a401647cd83f463ba')
+        #obj = request.facebook.application.getPublicInfo(application_canvas_name='benders-property')
         #obj = request.facebook.stream.get()
         #obj = request.facebook.__dict__
         #obj = len(request.facebook._friends)
         #obj = request.facebook.friends.getLists()
         #obj = request.facebook.friends.get(flid=105202265658L)
         #obj = FBUser.objects.get_current()
-        #obj = request.REQUEST.items()
         #obj = request.facebook.__dict__
-        obj = request.META['HTTP_HOST']
+        #obj = request.REQUEST.items()
+        obj = request.META.items()
     except Exception, exj:
         obj = str(exj.__class__)+str(exj)
     #obj = None
