@@ -1,4 +1,5 @@
 {% extends "base.fbml" %}
+{% load bp_babel %}
 
 {% block content %}
 <style type="text/css">
@@ -29,9 +30,9 @@
             <fb:name uid="{{ friend.id }}" linked="false" useyou="false" />
         </td>
         <td style="font-weight: bold; text-align: center">{{ friend.trade.name }}</td>
-        <td style="font-weight: bold; text-align: center">${{ friend.value }}</td>
-        <td style="font-weight: bold; text-align: center">${{ friend.cash }}</td>
-        <td style="font-weight: bold; text-align: center">${{ friend.total }}</td>
+        <td style="font-weight: bold; text-align: right; padding: 10px">${{ friend.value|bp_numberfmt }}</td>
+        <td style="font-weight: bold; text-align: right; padding: 10px">${{ friend.cash|bp_numberfmt }}</td>
+        <td style="font-weight: bold; text-align: right; padding: 10px">${{ friend.total|bp_numberfmt }}</td>
         </tr>
       {% endfor %}
     </tbody>
