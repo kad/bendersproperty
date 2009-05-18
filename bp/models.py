@@ -57,6 +57,7 @@ class FBUser(models.Model):
     # User's cash
     cash = BigPositiveIntegerField(default=35000)
     value = BigPositiveIntegerField(default=0)
+    rent = BigPositiveIntegerField(default=0)
     # Last time when user collected rent
     last_rent_collected = models.DateTimeField(default=datetime.now)
 
@@ -73,8 +74,16 @@ class FBUser(models.Model):
     exp_plasterer = models.IntegerField(default=0)
     exp_decorator = models.IntegerField(default=0)
 
-    max_cache = BigPositiveIntegerField(default=35000)
+    max_cash = BigPositiveIntegerField(default=35000)
     max_value = BigPositiveIntegerField(default=0)
+
+    @property
+    def total(self):
+        return self.value + self.cash
+
+    @property
+    def max_total(self):
+        return self.max_value + self.max_cash
 
     def __unicode__(self):
         return u'%d' % self.id
