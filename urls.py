@@ -11,10 +11,6 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
-from bendersproperty.bp.models import FBUser, Trade, LandRegion, PropertyType, PropertyKind
-for cls in (FBUser, Trade, LandRegion, PropertyType, PropertyKind):
-    admin.site.register(cls)
-
 urlpatterns = patterns('',
     # Example:
     (r'^benders-property/', include('bendersproperty.bp.urls')),
