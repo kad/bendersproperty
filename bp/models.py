@@ -112,11 +112,11 @@ class PropertyKind(models.Model):
     rent = models.IntegerField(default=0, blank=False, null=False)
     value = models.IntegerField(default=0, blank=False, null=False)
 
-    require_builder = models.IntegerField(default=0, blank=False, null=False)
-    require_plumber = models.IntegerField(default=0, blank=False, null=False)
-    require_electrician = models.IntegerField(default=0, blank=False, null=False)
-    require_plasterer = models.IntegerField(default=0, blank=False, null=False)
-    require_decorator = models.IntegerField(default=0, blank=False, null=False)
+    require_builder = models.IntegerField(default=0, blank=False, null=False, verbose_name='Builders')
+    require_plumber = models.IntegerField(default=0, blank=False, null=False, verbose_name='Plumbers')
+    require_electrician = models.IntegerField(default=0, blank=False, null=False, verbose_name='Electricians')
+    require_plasterer = models.IntegerField(default=0, blank=False, null=False, verbose_name='Plasterer')
+    require_decorator = models.IntegerField(default=0, blank=False, null=False, verbose_name='Decorators')
 
     def __unicode__(self):
         return self.name
