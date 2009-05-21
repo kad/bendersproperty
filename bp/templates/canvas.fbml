@@ -48,35 +48,46 @@
 .warning { color: red; font-weight: bold; }
 .wrapper { border-bottom: 1px solid #3b5998; padding: 0px 20px; }
 .wrapper { padding: 0px 20px; }
+
+.boxHeader { font-size: 14px; font-weight: bold; }
+.panelBorder { border: 1px solid #b7b7b7; padding: 0pt; width: 175px; }
+.panelHeader { text-align: center; border-width: 1px; border-bottom: 1px solid #b7b7b7; padding: 3px 0px 3px 8px; color: white; font-size: 12px; background-color: #3b5998; }
 </style>
 
 
-
-<div style='width:175px;background:#EEEEEE;float:right;'>
-    <div style='width:155px;margin:10px;'>
-    <!-- Sidebar Content Here -->
-        <div style='clear:both;font-weight:bold;background:#F7F7F7;border:1px solid #CCCCCC;margin:10px;text-align:center;padding:5px;'>
-            <span >Actions</span><br/>
-            <a href='/favorite.php?qid=$qid'><img src='http://ya.ru/images/fav_big.png' style='border:none;margin:0px;'>aaaa</a>
-            <a href='/delete.php?qid=$qid'><img src='http://ya.ru/images/delete_big.png' style='border:none;margin:0px;'>bbb</a>
-            <a href='/edit.php?qid=$qid'><img src='http://ya.ru/images/edit_big.png' style='border:none;margin:0px;'>cccc</a>
-        </div>
-        <div style='clear:both;' />
-    </div>
-</div>
-<div style='padding:20px;'>
-    <div style='width:425px;float:left;'>
-        <!-- Main Content Here -->
-<div >
-<fb:dialog id="my_dialog"> <fb:dialog-title>My Little Dialog</fb:dialog-title> <fb:dialog-content><form id="my_form">Do you like my little dialog?</form></fb:dialog-content> <fb:dialog-button type="submit" value="Yes" clickrewriteurl="http://www.someurl.com/response.php" clickrewriteid="my_dialog" clickrewriteform="my_form" /> </fb:dialog> 
-<br /><br />
+<table width="100%" cellspacing="0" cellpadding="0"><tbody><tr>
+    <td class="pad_menu" valign="top">
+        <table class="panelBorder" cellspacing="0">
+        <tr><td class="panelHeader">Menu</td></tr>
+        <tr><td><ul><li>item 1</li><br/><li>item 2</li><br/></ul></td></tr>
+        </table>
+    </td>
+    <td class="pad_content" valign="top">
+    <div class="boxHeader panelHeader">Content part</div>
+    <br/>
+    <div>
     Welcome, <fb:name uid="{{ fbuser.id }}" firstnameonly="true" useyou="false" />!
-
-    </div>
+    <script type="text/javascript"> function myCallback() { document.getElementById('timer').setStyle('color','#CC0000'); } </script> <div id="timer"> <fb:fbml xmlns:fc="http://external.facebook.com/apps/publictags">  <fc:countdown to="10" callback="myCallback" /> </fb:fbml> </div> 
+<fb:editor action="?do-it" labelwidth="100">
+    <fb:editor-text label="Title" name="title" value=""/>
+    <fb:editor-text label="Author" name="author" value=""/>
+    <fb:editor-divider/>
+    <fb:editor-custom label="Status">
+        <select name="state">
+        <option value="0" selected>have read</option>
+        <option value="1">am reading</option>
+        <option value="2">want to read</option>
+        </select>
+    </fb:editor-custom>
+    <fb:editor-textarea label="Comment" name="comment"/>
+    <fb:editor-buttonset>
+        <fb:editor-button value="Add"/>
+        <fb:editor-button value="Recommend"/>
+        <fb:editor-cancel />
+    </fb:editor-buttonset>
+</fb:editor>
 </div>
-</div>
+</td>
+</tr></tbody></table>
 
-<div>
-
-</div>
 {% endblock %}
