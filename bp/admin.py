@@ -14,8 +14,8 @@ class FBUserAdmin(admin.ModelAdmin):
     ordering = ('-value', '-cash', '-rent', 'id', )
 
 class PropertyKindAdmin(admin.ModelAdmin):
-    list_display = ('name', 'size', 'value', 'cost', 'rent', 'require_builder', 'require_plumber', 'require_electrician', 'require_plasterer', 'require_decorator')
-    ordering = ('-size', '-value', '-rent', '-cost', )
+    list_display = ('name', 'size', 'region', 'type', 'value', 'cost', 'rent', 'require_builder', 'require_plumber', 'require_electrician', 'require_plasterer', 'require_decorator')
+    ordering = ('size', '-value', '-rent', '-cost', )
 
 admin.site.register(FBUser, FBUserAdmin)
 admin.site.register(PropertyKind, PropertyKindAdmin)
