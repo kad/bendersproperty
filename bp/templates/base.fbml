@@ -6,6 +6,7 @@
 .center { text-align: center; }
 .middle { vertical-align: middle; }
 .bottom { vertical-align: bottom; }
+img.bottom { vertical-align: bottom; width: 16px; height: 16px; }
 .full { border: medium none #ffffff; margin: 0px; padding: 0px; width: 100%; }
 .userstatustop { border-top: 1px solid #cccccc; border-left: 0px solid #cccccc; border-right: 0px solid #cccccc; text-align: center; padding-bottom: 20px; }
 .userstatustop td { border-left: 1px solid #c8cfda; border-right: 1px solid #c8cfda; border-bottom: 1px solid #c8cfda; padding: 5px 10px; margin-top: 5px; background-color: #f7f7f7; color: #3b5998; font-weight: bold; }
@@ -13,7 +14,7 @@
 .userstatus { text-align: center; padding-top: 0px; border-bottom: 1px solid #cccccc; }
 .userstatusbottom { border-bottom: 0px solid #cccccc; border-left: 0px solid #cccccc; border-right: 0px solid #cccccc; text-align: center; padding-top: 0px; }
 .userstatus td { border-left: 1px solid #c8cfda; border-right: 1px solid #c8cfda; border-top: 1px solid #c8cfda; padding: 5px 10px; margin-bottom: 5px; background-color: #f7f7f7; color: #3b5998; font-weight: bold; }
-.userstatus img { vertical-align: bottom; }
+.userstatus img { vertical-align: bottom; width: 16px; height: 16px; }
 .pagediv h1 { border-bottom:1px solid #CCCCCC; font-weight:bold; color: #333333; padding-top: 15px; display:block; margin:0; }
 .tableth { background-color:#D8DFEA; border-top:1px solid #3B5998; color: #3B5998; margin:0; font-weight:bold; }
 .friendtable { border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; border-top:1px solid #94A3C4; margin-top:10px; }
@@ -65,7 +66,7 @@
 <td><a href="build"><img src="{{ MEDIA_URL }}icons/money.png"> <span style="color: green">${{ fbuser.rent|bp_numberfmt:locale }}</span></a></td>
 {% if fbuser.trade_id %}<td><a href="set_trade"><img src="{{ MEDIA_URL }}icons/{{ fbuser.trade.icon }}"> {{ fbuser.trade.name }}</a></td>{% endif %}
 {% if fbuser.hour_rate %}<td><a href="hour_rate"><img src="{{ MEDIA_URL }}icons/wrench.png"> <span style="color: green">${{ fbuser.hour_rate|bp_numberfmt:locale }}/hour</span></a></td>{% endif %}
-<td><a href="hour_rate"<img src="{{ MEDIA_URL }}icons/clock{% if not fbuser.hours %}_red{% endif %}.png"> Hours: <span style="color: {% if fbuser.hours %}green{% else %}red{% endif %}">{{ fbuser.hours }}</span></a></td>
+<td><a href="hour_rate"<img src="{{ MEDIA_URL }}icons/clock{% if not fbuser.hours %}_red{% endif %}.png"> Hours: <span style="color: {% if fbuser.hours %}green{% else %}red{% endif %}">{{ fbuser.hours|time:"H:i" }}</span></a></td>
 </tr>
 </tbody></table>
 </center>
