@@ -63,7 +63,7 @@ class FBUser(models.Model):
 
     trade = models.ForeignKey(Trade, null=True, blank=True, default=None)
     hour_rate = models.IntegerField(default=0)
-    hours = models.FloatField(default=6)
+    hours = models.TimeField(default='06:00:00')
     reserved_hours = models.IntegerField(default=0)
     last_reset = models.DateTimeField(default=datetime.now)
 
