@@ -51,7 +51,7 @@ img.bottom { vertical-align: bottom; width: 16px; height: 16px; }
   <fb:action href="summary"><img class="bottom" src="{{ MEDIA_URL }}icons/house.png"> <fb:application-name linked="false"/></fb:action>
   <fb:action href="invite"><img class="bottom" src="{{ MEDIA_URL }}icons/group_add.png"> Invite Friends</fb:action>
   <fb:action href="friends"><img class="bottom" src="{{ MEDIA_URL }}icons/group.png"> Friends</fb:action>
-  <fb:action href="leaderboard"><img class="bottom" src="{{ MEDIA_URL }}icons/award_star_gold_1.png"> Top players</fb:action/>
+  <fb:action href="leaderboard"><img class="bottom" src="{{ MEDIA_URL }}icons/chart_bar.png"> Top players</fb:action/>
   <fb:action href="charts"><img class="bottom" src="{{ MEDIA_URL }}icons/chart_curve.png"> Charts</fb:action/>
   <fb:help href="help"><img class="bottom" src="{{ MEDIA_URL }}icons/help.png"> Help</fb:help>
   <fb:help href="http://www.facebook.com/apps/application.php?id=70364136730"><img class="bottom" src="{{ MEDIA_URL }}icons/application_home.png"> About</fb:help>
