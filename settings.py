@@ -65,7 +65,7 @@ MIDDLEWARE_CLASSES = (
     'facebook.djangofb.FacebookMiddleware',
 )
 
-ROOT_URLCONF = 'bendersproperty.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -88,7 +88,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    'bendersproperty.bp',
+    'bp',
 )
 
 FACEBOOK_API_KEY=''
