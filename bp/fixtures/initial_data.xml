@@ -47,4 +47,424 @@
     <object pk="6" model="bp.landregion">
         <field type="CharField" name="name">Desert</field>
     </object>
+    <object pk="1" model="bp.propertykind">
+        <field type="CharField" name="name">Small apartment</field>
+        <field type="IntegerField" name="size">1</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">1</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">1</field>
+        <field type="IntegerField" name="cost">10000</field>
+        <field type="IntegerField" name="rent">1000</field>
+        <field type="IntegerField" name="value">50000</field>
+        <field type="IntegerField" name="require_builder">18</field>
+        <field type="IntegerField" name="require_plumber">4</field>
+        <field type="IntegerField" name="require_electrician">4</field>
+        <field type="IntegerField" name="require_plasterer">4</field>
+        <field type="IntegerField" name="require_decorator">4</field>
+    </object>
+    <object pk="2" model="bp.propertykind">
+        <field type="CharField" name="name">Beach Hut</field>
+        <field type="IntegerField" name="size">1</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">3</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">2</field>
+        <field type="IntegerField" name="cost">10000</field>
+        <field type="IntegerField" name="rent">1000</field>
+        <field type="IntegerField" name="value">50000</field>
+        <field type="IntegerField" name="require_builder">18</field>
+        <field type="IntegerField" name="require_plumber">4</field>
+        <field type="IntegerField" name="require_electrician">4</field>
+        <field type="IntegerField" name="require_plasterer">4</field>
+        <field type="IntegerField" name="require_decorator">4</field>
+    </object>
+    <object pk="3" model="bp.propertykind">
+        <field type="CharField" name="name">Shed</field>
+        <field type="IntegerField" name="size">1</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">4</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">1</field>
+        <field type="IntegerField" name="cost">10000</field>
+        <field type="IntegerField" name="rent">1000</field>
+        <field type="IntegerField" name="value">50000</field>
+        <field type="IntegerField" name="require_builder">18</field>
+        <field type="IntegerField" name="require_plumber">4</field>
+        <field type="IntegerField" name="require_electrician">4</field>
+        <field type="IntegerField" name="require_plasterer">4</field>
+        <field type="IntegerField" name="require_decorator">4</field>
+    </object>
+    <object pk="4" model="bp.propertykind">
+        <field type="CharField" name="name">Shooting gallery</field>
+        <field type="IntegerField" name="size">1</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">6</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">2</field>
+        <field type="IntegerField" name="cost">10000</field>
+        <field type="IntegerField" name="rent">1000</field>
+        <field type="IntegerField" name="value">50000</field>
+        <field type="IntegerField" name="require_builder">18</field>
+        <field type="IntegerField" name="require_plumber">4</field>
+        <field type="IntegerField" name="require_electrician">4</field>
+        <field type="IntegerField" name="require_plasterer">4</field>
+        <field type="IntegerField" name="require_decorator">4</field>
+    </object>
+    <object pk="5" model="bp.propertykind">
+        <field type="CharField" name="name">Garage</field>
+        <field type="IntegerField" name="size">1</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">5</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">3</field>
+        <field type="IntegerField" name="cost">10000</field>
+        <field type="IntegerField" name="rent">1000</field>
+        <field type="IntegerField" name="value">50000</field>
+        <field type="IntegerField" name="require_builder">18</field>
+        <field type="IntegerField" name="require_plumber">4</field>
+        <field type="IntegerField" name="require_electrician">4</field>
+        <field type="IntegerField" name="require_plasterer">4</field>
+        <field type="IntegerField" name="require_decorator">4</field>
+    </object>
+    <object pk="6" model="bp.propertykind">
+        <field type="CharField" name="name">Condo</field>
+        <field type="IntegerField" name="size">1</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">2</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">1</field>
+        <field type="IntegerField" name="cost">10000</field>
+        <field type="IntegerField" name="rent">1000</field>
+        <field type="IntegerField" name="value">50000</field>
+        <field type="IntegerField" name="require_builder">18</field>
+        <field type="IntegerField" name="require_plumber">4</field>
+        <field type="IntegerField" name="require_electrician">4</field>
+        <field type="IntegerField" name="require_plasterer">4</field>
+        <field type="IntegerField" name="require_decorator">4</field>
+    </object>
+    <object pk="7" model="bp.propertykind">
+        <field type="CharField" name="name">Large Apartment</field>
+        <field type="IntegerField" name="size">2</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">1</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">1</field>
+        <field type="IntegerField" name="cost">25000</field>
+        <field type="IntegerField" name="rent">2250</field>
+        <field type="IntegerField" name="value">112500</field>
+        <field type="IntegerField" name="require_builder">24</field>
+        <field type="IntegerField" name="require_plumber">8</field>
+        <field type="IntegerField" name="require_electrician">8</field>
+        <field type="IntegerField" name="require_plasterer">8</field>
+        <field type="IntegerField" name="require_decorator">8</field>
+    </object>
+    <object pk="8" model="bp.propertykind">
+        <field type="CharField" name="name">Masionette</field>
+        <field type="IntegerField" name="size">2</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">2</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">1</field>
+        <field type="IntegerField" name="cost">25000</field>
+        <field type="IntegerField" name="rent">2250</field>
+        <field type="IntegerField" name="value">112500</field>
+        <field type="IntegerField" name="require_builder">24</field>
+        <field type="IntegerField" name="require_plumber">8</field>
+        <field type="IntegerField" name="require_electrician">8</field>
+        <field type="IntegerField" name="require_plasterer">8</field>
+        <field type="IntegerField" name="require_decorator">8</field>
+    </object>
+    <object pk="9" model="bp.propertykind">
+        <field type="CharField" name="name">Icecream kiosk</field>
+        <field type="IntegerField" name="size">2</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">3</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">3</field>
+        <field type="IntegerField" name="cost">25000</field>
+        <field type="IntegerField" name="rent">2250</field>
+        <field type="IntegerField" name="value">112500</field>
+        <field type="IntegerField" name="require_builder">24</field>
+        <field type="IntegerField" name="require_plumber">8</field>
+        <field type="IntegerField" name="require_electrician">8</field>
+        <field type="IntegerField" name="require_plasterer">8</field>
+        <field type="IntegerField" name="require_decorator">8</field>
+    </object>
+    <object pk="10" model="bp.propertykind">
+        <field type="CharField" name="name">Log Cabin</field>
+        <field type="IntegerField" name="size">2</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">4</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">1</field>
+        <field type="IntegerField" name="cost">25000</field>
+        <field type="IntegerField" name="rent">2250</field>
+        <field type="IntegerField" name="value">112500</field>
+        <field type="IntegerField" name="require_builder">24</field>
+        <field type="IntegerField" name="require_plumber">8</field>
+        <field type="IntegerField" name="require_electrician">8</field>
+        <field type="IntegerField" name="require_plasterer">8</field>
+        <field type="IntegerField" name="require_decorator">8</field>
+    </object>
+    <object pk="11" model="bp.propertykind">
+        <field type="CharField" name="name">Tavern</field>
+        <field type="IntegerField" name="size">2</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">6</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">3</field>
+        <field type="IntegerField" name="cost">25000</field>
+        <field type="IntegerField" name="rent">2250</field>
+        <field type="IntegerField" name="value">112500</field>
+        <field type="IntegerField" name="require_builder">24</field>
+        <field type="IntegerField" name="require_plumber">8</field>
+        <field type="IntegerField" name="require_electrician">8</field>
+        <field type="IntegerField" name="require_plasterer">8</field>
+        <field type="IntegerField" name="require_decorator">8</field>
+    </object>
+    <object pk="12" model="bp.propertykind">
+        <field type="CharField" name="name">Depot</field>
+        <field type="IntegerField" name="size">2</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">5</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">3</field>
+        <field type="IntegerField" name="cost">25000</field>
+        <field type="IntegerField" name="rent">2250</field>
+        <field type="IntegerField" name="value">112500</field>
+        <field type="IntegerField" name="require_builder">24</field>
+        <field type="IntegerField" name="require_plumber">8</field>
+        <field type="IntegerField" name="require_electrician">8</field>
+        <field type="IntegerField" name="require_plasterer">8</field>
+        <field type="IntegerField" name="require_decorator">8</field>
+    </object>
+    <object pk="13" model="bp.propertykind">
+        <field type="CharField" name="name">Reustarant</field>
+        <field type="IntegerField" name="size">3</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">1</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">3</field>
+        <field type="IntegerField" name="cost">35000</field>
+        <field type="IntegerField" name="rent">2500</field>
+        <field type="IntegerField" name="value">125000</field>
+        <field type="IntegerField" name="require_builder">30</field>
+        <field type="IntegerField" name="require_plumber">12</field>
+        <field type="IntegerField" name="require_electrician">12</field>
+        <field type="IntegerField" name="require_plasterer">12</field>
+        <field type="IntegerField" name="require_decorator">12</field>
+    </object>
+    <object pk="14" model="bp.propertykind">
+        <field type="CharField" name="name">Semi-Detatched House</field>
+        <field type="IntegerField" name="size">3</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">2</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">1</field>
+        <field type="IntegerField" name="cost">35000</field>
+        <field type="IntegerField" name="rent">2500</field>
+        <field type="IntegerField" name="value">125000</field>
+        <field type="IntegerField" name="require_builder">30</field>
+        <field type="IntegerField" name="require_plumber">12</field>
+        <field type="IntegerField" name="require_electrician">12</field>
+        <field type="IntegerField" name="require_plasterer">12</field>
+        <field type="IntegerField" name="require_decorator">12</field>
+    </object>
+    <object pk="15" model="bp.propertykind">
+        <field type="CharField" name="name">Beach bar</field>
+        <field type="IntegerField" name="size">3</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">3</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">3</field>
+        <field type="IntegerField" name="cost">35000</field>
+        <field type="IntegerField" name="rent">2500</field>
+        <field type="IntegerField" name="value">125000</field>
+        <field type="IntegerField" name="require_builder">30</field>
+        <field type="IntegerField" name="require_plumber">12</field>
+        <field type="IntegerField" name="require_electrician">12</field>
+        <field type="IntegerField" name="require_plasterer">12</field>
+        <field type="IntegerField" name="require_decorator">12</field>
+    </object>
+    <object pk="16" model="bp.propertykind">
+        <field type="CharField" name="name">Country Cottage</field>
+        <field type="IntegerField" name="size">3</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">4</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">1</field>
+        <field type="IntegerField" name="cost">35000</field>
+        <field type="IntegerField" name="rent">2500</field>
+        <field type="IntegerField" name="value">125000</field>
+        <field type="IntegerField" name="require_builder">30</field>
+        <field type="IntegerField" name="require_plumber">12</field>
+        <field type="IntegerField" name="require_electrician">12</field>
+        <field type="IntegerField" name="require_plasterer">12</field>
+        <field type="IntegerField" name="require_decorator">12</field>
+    </object>
+    <object pk="17" model="bp.propertykind">
+        <field type="CharField" name="name">Kart circuit</field>
+        <field type="IntegerField" name="size">3</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">6</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">3</field>
+        <field type="IntegerField" name="cost">35000</field>
+        <field type="IntegerField" name="rent">2500</field>
+        <field type="IntegerField" name="value">125000</field>
+        <field type="IntegerField" name="require_builder">30</field>
+        <field type="IntegerField" name="require_plumber">12</field>
+        <field type="IntegerField" name="require_electrician">12</field>
+        <field type="IntegerField" name="require_plasterer">12</field>
+        <field type="IntegerField" name="require_decorator">12</field>
+    </object>
+    <object pk="18" model="bp.propertykind">
+        <field type="CharField" name="name">Dock</field>
+        <field type="IntegerField" name="size">3</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">5</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">3</field>
+        <field type="IntegerField" name="cost">35000</field>
+        <field type="IntegerField" name="rent">2500</field>
+        <field type="IntegerField" name="value">125000</field>
+        <field type="IntegerField" name="require_builder">30</field>
+        <field type="IntegerField" name="require_plumber">12</field>
+        <field type="IntegerField" name="require_electrician">12</field>
+        <field type="IntegerField" name="require_plasterer">12</field>
+        <field type="IntegerField" name="require_decorator">12</field>
+    </object>
+    <object pk="19" model="bp.propertykind">
+        <field type="CharField" name="name">Town House</field>
+        <field type="IntegerField" name="size">4</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">1</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">1</field>
+        <field type="IntegerField" name="cost">35000</field>
+        <field type="IntegerField" name="rent">3000</field>
+        <field type="IntegerField" name="value">150000</field>
+        <field type="IntegerField" name="require_builder">36</field>
+        <field type="IntegerField" name="require_plumber">16</field>
+        <field type="IntegerField" name="require_electrician">16</field>
+        <field type="IntegerField" name="require_plasterer">16</field>
+        <field type="IntegerField" name="require_decorator">16</field>
+    </object>
+    <object pk="20" model="bp.propertykind">
+        <field type="CharField" name="name">House Converted Into Flats</field>
+        <field type="IntegerField" name="size">4</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">2</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">1</field>
+        <field type="IntegerField" name="cost">35000</field>
+        <field type="IntegerField" name="rent">3000</field>
+        <field type="IntegerField" name="value">150000</field>
+        <field type="IntegerField" name="require_builder">36</field>
+        <field type="IntegerField" name="require_plumber">16</field>
+        <field type="IntegerField" name="require_electrician">16</field>
+        <field type="IntegerField" name="require_plasterer">16</field>
+        <field type="IntegerField" name="require_decorator">16</field>
+    </object>
+    <object pk="21" model="bp.propertykind">
+        <field type="CharField" name="name">Bed and Breakfast</field>
+        <field type="IntegerField" name="size">4</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">3</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">2</field>
+        <field type="IntegerField" name="cost">35000</field>
+        <field type="IntegerField" name="rent">3000</field>
+        <field type="IntegerField" name="value">150000</field>
+        <field type="IntegerField" name="require_builder">36</field>
+        <field type="IntegerField" name="require_plumber">16</field>
+        <field type="IntegerField" name="require_electrician">16</field>
+        <field type="IntegerField" name="require_plasterer">16</field>
+        <field type="IntegerField" name="require_decorator">16</field>
+    </object>
+    <object pk="22" model="bp.propertykind">
+        <field type="CharField" name="name">Farm House</field>
+        <field type="IntegerField" name="size">4</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">4</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">1</field>
+        <field type="IntegerField" name="cost">35000</field>
+        <field type="IntegerField" name="rent">3000</field>
+        <field type="IntegerField" name="value">150000</field>
+        <field type="IntegerField" name="require_builder">36</field>
+        <field type="IntegerField" name="require_plumber">16</field>
+        <field type="IntegerField" name="require_electrician">16</field>
+        <field type="IntegerField" name="require_plasterer">16</field>
+        <field type="IntegerField" name="require_decorator">16</field>
+    </object>
+    <object pk="23" model="bp.propertykind">
+        <field type="CharField" name="name">Shooting range</field>
+        <field type="IntegerField" name="size">4</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">6</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">3</field>
+        <field type="IntegerField" name="cost">35000</field>
+        <field type="IntegerField" name="rent">3000</field>
+        <field type="IntegerField" name="value">150000</field>
+        <field type="IntegerField" name="require_builder">36</field>
+        <field type="IntegerField" name="require_plumber">16</field>
+        <field type="IntegerField" name="require_electrician">16</field>
+        <field type="IntegerField" name="require_plasterer">16</field>
+        <field type="IntegerField" name="require_decorator">16</field>
+    </object>
+    <object pk="24" model="bp.propertykind">
+        <field type="CharField" name="name">Shipyard</field>
+        <field type="IntegerField" name="size">4</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">5</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">3</field>
+        <field type="IntegerField" name="cost">35000</field>
+        <field type="IntegerField" name="rent">3000</field>
+        <field type="IntegerField" name="value">150000</field>
+        <field type="IntegerField" name="require_builder">36</field>
+        <field type="IntegerField" name="require_plumber">16</field>
+        <field type="IntegerField" name="require_electrician">16</field>
+        <field type="IntegerField" name="require_plasterer">16</field>
+        <field type="IntegerField" name="require_decorator">16</field>
+    </object>
+    <object pk="25" model="bp.propertykind">
+        <field type="CharField" name="name">Loft</field>
+        <field type="IntegerField" name="size">5</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">1</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">1</field>
+        <field type="IntegerField" name="cost">48000</field>
+        <field type="IntegerField" name="rent">4000</field>
+        <field type="IntegerField" name="value">200000</field>
+        <field type="IntegerField" name="require_builder">42</field>
+        <field type="IntegerField" name="require_plumber">20</field>
+        <field type="IntegerField" name="require_electrician">20</field>
+        <field type="IntegerField" name="require_plasterer">20</field>
+        <field type="IntegerField" name="require_decorator">20</field>
+    </object>
+    <object pk="26" model="bp.propertykind">
+        <field type="CharField" name="name">Detatched House</field>
+        <field type="IntegerField" name="size">5</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">2</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">1</field>
+        <field type="IntegerField" name="cost">48000</field>
+        <field type="IntegerField" name="rent">4000</field>
+        <field type="IntegerField" name="value">200000</field>
+        <field type="IntegerField" name="require_builder">42</field>
+        <field type="IntegerField" name="require_plumber">20</field>
+        <field type="IntegerField" name="require_electrician">20</field>
+        <field type="IntegerField" name="require_plasterer">20</field>
+        <field type="IntegerField" name="require_decorator">20</field>
+    </object>
+    <object pk="27" model="bp.propertykind">
+        <field type="CharField" name="name">3-Star Franchise Hotel</field>
+        <field type="IntegerField" name="size">5</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">3</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">2</field>
+        <field type="IntegerField" name="cost">48000</field>
+        <field type="IntegerField" name="rent">4000</field>
+        <field type="IntegerField" name="value">200000</field>
+        <field type="IntegerField" name="require_builder">42</field>
+        <field type="IntegerField" name="require_plumber">20</field>
+        <field type="IntegerField" name="require_electrician">20</field>
+        <field type="IntegerField" name="require_plasterer">20</field>
+        <field type="IntegerField" name="require_decorator">20</field>
+    </object>
+    <object pk="28" model="bp.propertykind">
+        <field type="CharField" name="name">Mill</field>
+        <field type="IntegerField" name="size">5</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">4</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">3</field>
+        <field type="IntegerField" name="cost">48000</field>
+        <field type="IntegerField" name="rent">4000</field>
+        <field type="IntegerField" name="value">200000</field>
+        <field type="IntegerField" name="require_builder">42</field>
+        <field type="IntegerField" name="require_plumber">20</field>
+        <field type="IntegerField" name="require_electrician">20</field>
+        <field type="IntegerField" name="require_plasterer">20</field>
+        <field type="IntegerField" name="require_decorator">20</field>
+    </object>
+    <object pk="29" model="bp.propertykind">
+        <field type="CharField" name="name">Rally circuit</field>
+        <field type="IntegerField" name="size">5</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">6</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">2</field>
+        <field type="IntegerField" name="cost">48000</field>
+        <field type="IntegerField" name="rent">4000</field>
+        <field type="IntegerField" name="value">200000</field>
+        <field type="IntegerField" name="require_builder">42</field>
+        <field type="IntegerField" name="require_plumber">20</field>
+        <field type="IntegerField" name="require_electrician">20</field>
+        <field type="IntegerField" name="require_plasterer">20</field>
+        <field type="IntegerField" name="require_decorator">20</field>
+    </object>
+    <object pk="30" model="bp.propertykind">
+        <field type="CharField" name="name">Container Yard </field>
+        <field type="IntegerField" name="size">5</field>
+        <field to="bp.landregion" name="region" rel="ManyToOneRel">5</field>
+        <field to="bp.propertytype" name="type" rel="ManyToOneRel">3</field>
+        <field type="IntegerField" name="cost">48000</field>
+        <field type="IntegerField" name="rent">4000</field>
+        <field type="IntegerField" name="value">200000</field>
+        <field type="IntegerField" name="require_builder">42</field>
+        <field type="IntegerField" name="require_plumber">20</field>
+        <field type="IntegerField" name="require_electrician">20</field>
+        <field type="IntegerField" name="require_plasterer">20</field>
+        <field type="IntegerField" name="require_decorator">20</field>
+    </object>
 </django-objects>
