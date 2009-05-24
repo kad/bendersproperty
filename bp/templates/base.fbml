@@ -7,14 +7,13 @@
 .middle { vertical-align: middle; }
 .bottom { vertical-align: bottom; }
 img.bottom { vertical-align: bottom; width: 16px; height: 16px; }
+
 .full { border: medium none #ffffff; margin: 0px; padding: 0px; width: 100%; }
-.userstatustop { border-top: 1px solid #cccccc; border-left: 0px solid #cccccc; border-right: 0px solid #cccccc; text-align: center; padding-bottom: 20px; }
-.userstatustop td { border-left: 1px solid #c8cfda; border-right: 1px solid #c8cfda; border-bottom: 1px solid #c8cfda; padding: 5px 10px; margin-top: 5px; background-color: #f7f7f7; color: #3b5998; font-weight: bold; }
-.userstatustop img { vertical-align: bottom; }
+
 .userstatus { text-align: center; padding-top: 0px; border-bottom: 1px solid #cccccc; }
-.userstatusbottom { border-bottom: 0px solid #cccccc; border-left: 0px solid #cccccc; border-right: 0px solid #cccccc; text-align: center; padding-top: 0px; }
 .userstatus td { border-left: 1px solid #c8cfda; border-right: 1px solid #c8cfda; border-top: 1px solid #c8cfda; padding: 5px 10px; margin-bottom: 5px; background-color: #f7f7f7; color: #3b5998; font-weight: bold; }
 .userstatus img { vertical-align: bottom; width: 16px; height: 16px; }
+
 .pagediv h1 { border-bottom:1px solid #CCCCCC; font-weight:bold; color: #333333; padding-top: 15px; display:block; margin:0; }
 .tableth { background-color:#D8DFEA; border-top:1px solid #3B5998; color: #3B5998; margin:0; font-weight:bold; }
 .friendtable { border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; border-top:1px solid #94A3C4; margin-top:10px; }
@@ -43,9 +42,25 @@ img.bottom { vertical-align: bottom; width: 16px; height: 16px; }
 .pad_left_m { padding-left: 15px; }
 .pad_left_l { padding-left: 20px; }
 .pad_left_xl { padding-left: 40px; }
+
 .pad_content { padding: 17px 17px 17px 17px; width: 100%; }
 .pad_menu { padding: 17px 17px 17px 17px; }
+
 .border { border: 1px solid #B7B7B7; }
+
+/* Path: css/kit/editor.css */
+.keditorkit { margin:0 auto 15px; padding:0; border-collapse:collapse; }
+.keditorkit .keditorkit_row input, .keditorkit .keditorkit_row textarea { width:100%; margin:0; padding:4px 0 4px 3px; border:1px solid #8496ba; font-size:11px; }
+.keditorkit .keditorkit_row .checkbox{ width:auto; }
+.keditorkit th, .keditorkit td{ margin:0; padding:10px 0 0; }
+.keditorkit .width_setter th, .keditorkit .width_setter td{ padding-top:0; }
+.keditorkit th { padding-right:13px; text-align:right; font-weight:bold; vertical-align:middle; }
+
+/* not really needed anymore */
+.userstatustop { border-top: 1px solid #cccccc; border-left: 0px solid #cccccc; border-right: 0px solid #cccccc; text-align: center; padding-bottom: 20px; }
+.userstatustop td { border-left: 1px solid #c8cfda; border-right: 1px solid #c8cfda; border-bottom: 1px solid #c8cfda; padding: 5px 10px; margin-top: 5px; background-color: #f7f7f7; color: #3b5998; font-weight: bold; }
+.userstatustop img { vertical-align: bottom; }
+.userstatusbottom { border-bottom: 0px solid #cccccc; border-left: 0px solid #cccccc; border-right: 0px solid #cccccc; text-align: center; padding-top: 0px; }
 </style>
 <fb:dashboard>
   <fb:action href="summary"><img class="bottom" src="{{ MEDIA_URL }}icons/house.png"> <fb:application-name linked="false"/></fb:action>
