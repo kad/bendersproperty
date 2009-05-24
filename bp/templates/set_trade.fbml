@@ -2,39 +2,90 @@
 
 {% block content %}
 <style type="text/css">
-.tab_header { border-top: 1px solid #3b5998; background-color: #d8dfea; color: #3b5998; }
-.tab_header { margin: 0px; padding: 2px 8px; font-size: 11px; font-weight: bold; }
-.panelBorder { border: 1px solid #b7b7b7; padding: 0pt; width: 175px; }
-.panelHeader { text-align: center; border-width: 1px; border-bottom: 1px solid #b7b7b7; padding: 3px 0px 3px 8px; color: white; font-size: 12px; background-color: #3b5998; }
+.std_menu { float: left; width: 110px; padding: 10px; margin: 0; display: block; position: relative; }
+.std_content { float: right; width: 600px; padding: 10px; }
+
+.menu_actions { border-top: 1px solid #94A3C4; padding-bottom: 20px; }
+.menu_actions a.menu_action { border-bottom: 1px solid #D8DFEA; border-right: 1px solid #D8DFEA; border-left: 1px solid #D8DFEA; display: block; padding: 3px 8px; text-decoration: none; }
+
+.bplayout { padding: 5px; }
+.bplayout .header { background: #D8DFEA none repeat scroll 0 0; border-top: 1px solid #3B5998; margin: 0; padding: 2px 8px;  border-right: 1px solid #94A3C4; border-left: 1px solid #94A3C4; }
+.bplayout .subheader { background: #EEEEEE none repeat scroll 0 0; border-top: 1px solid #CCCCCC; color:#3B5998; font-size:12px; margin:0; padding:2px 8px; border-right: 1px solid #94A3C4; border-left: 1px solid #94A3C4; }
+.bplayout .box { border-top: 1px solid #94A3C4; padding: 10px; border-right: 1px solid #94A3C4; border-left: 1px solid #94A3C4; }
+.bplayout .box_last { border-bottom: 1px solid #94A3C4; }
+
+.keditor textarea { border:1px solid #8496BA; }
 </style>
-<div style="padding: 5px;">
-    <center>
-    <table style="width: 90%"><tr>
-    <td>
-    <fb:explanation>
-    <fb:message>Select Your Trade</fb:message>
-    You need to have a trade to play.<br/>
-    Choose which specialism you would like to have in the game. <br/>
-    The available trades and the number of players are shown on the right. <br/><br/>
-    <strong>Warning:</strong> After your initial choice, changing specialism costs 1 hour.
-    </fb:explanation>
-    </td>
-    <td style="width: 30%">
-    <form method="post">
-    <table class="formtable panelBorder" cellspacing="0">
-    <tr><td class="panelHeader">Available trades</td></tr>
-    {% for trade in trades %}
+
+<div class="clearfix bplayout">
+    <div class="std_menu">
+        <div class="header">
+            <h2>Main menu</h2>
+        </div>
+        {% comment %}
+        <div class="subheader clearfix">
+            <h3>subheader</h3>
+        </div>
+        {% endcomment %}
+        <div class="clearfix menu_actions">
+            <a class="menu_action" href="summary">Summary</a>
+            <a class="menu_action" href="portfolio">Portfolio</a>
+            <a class="menu_action" href="market">Marketplace</a>
+            <a class="menu_action" href="build">Build new</a>
+        </div>
+    </div>
+    <div class="std_content">
+
+    <div class="header"><h2>Game profile</h2></div>
+    <form action="" method="post">
+    <div class="subheader"><h3>Select Your Trade</h3></div>
+    <div class="box clearfix">
+        <table class="formtable" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr><td>
+        You need to have a trade to play.<br/>
+        Choose which specialism you would like to have in the game.<br/>
+        The available trades and the number of players are shown on the right.<br/><br/>
+        <strong>Warning:</strong> After your initial choice, changing specialism costs 1 hour.
+        </td><td>
+        <table cellpadding="0" cellspacing="0">
+        {% for trade in trades %}
         <tr>
-        <td class="pad_right pad_left pad_top_xs pad_bottom_xs"><input class="inputradio" type="radio" id="trade_{{ trade.id }}" name="trade" value="{{ trade.id }}"{% ifequal fbuser.trade.id trade.id %} checked="checked"{% endifequal %}>
-        <label for="trade_{{ trade.id }}"><img style="vertical-align: bottom" src="{{ MEDIA_URL }}icons/{{ trade.icon }}"> {{ trade.name }} - {{ trade.fbuser_set.count }}</label></td>
+        <td class="pad_right pad_left pad_top_xs pad_bottom_xs"><input class="inputradio inputcheckbox" type="radio" id="trade_{{ trade.id }}" name="trade" value="{{ trade.id }}"{% ifequal fbuser.trade.id trade.id %} checked="checked"{% endifequal %}></td><td><label style="white-space: nowrap;" for="trade_{{ trade.id }}"><img style="vertical-align: bottom" src="{{ MEDIA_URL }}icons/{{ trade.icon }}"> {{ trade.name }} - {{ trade.fbuser_set.count }}</label></td>
         </tr>
-    {% endfor %}
-    <tr><td class="formbuttons"><input type="submit" value="Select trade" class="inputsubmit"/></td></tr>
-    </table>
+        {% endfor %}
+        </table>
+        </td></tr>
+        </tbody>
+        </table>
+        </div>
+
+    <div class="subheader"><h3>List yourself on Labor market</h3></div>
+    <div class="box clearfix">
+        <table class="formtable" cellpadding="0">
+        <tbody>
+        <tr><td>
+        To list your services{% if fbuser.trade %} as a {{ fbuser.trade.name }}{% endif %} in the Labor Market, enter your hourly rate.
+        Put 0 if you don't like to be listed.
+        </td>
+        <td style="text-align: right;"><label style="white-space:nowrap;" for="rate">Rate: $</label></td><td><input type="text" maxlength="3" size="3" name="rate" value="150" class="inputtext"/></td></tr>
+        <tr><td>
+        <p>A standard hourly rate is $150, but you can set any amount between $1 and $165.</p></td><td/><td/></tr>
+        <tr><td>Do you want to reserve a number of hours for your own work? If so, enter your reserved hours.</td>
+            <td style="text-align: right;"><label style="white-space: nowrap;" for="reserved_hours" >Reserved hours: </label></td><td><select name="reserved_hours">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            </select></td></tr>
+        </table>
+    </div>
+    <div class="box box_last clearfix" align="center">
+        <input type="submit" value="Update your profile" class="inputsubmit"/>
+    </div>
     </form>
-    </td>
-    </tr>
-    </table>
-    </center>
+    </div>
 </div>
 {% endblock %}
