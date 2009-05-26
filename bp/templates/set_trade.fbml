@@ -40,7 +40,7 @@
     <form action="" method="post">
     <div class="subheader"><h3>Select Your Trade</h3></div>
     <div class="box clearfix">
-        <table class="formtable" cellspacing="0" cellpadding="0">
+        <table class="formtable" cellspacing="0" cellpadding="0" width="100%">
             <tbody>
             <tr><td>
         You need to have a trade to play.<br/>
@@ -51,7 +51,8 @@
         <table cellpadding="0" cellspacing="0">
         {% for trade in trades %}
         <tr>
-        <td class="pad_right pad_left pad_top_xs pad_bottom_xs"><input class="inputradio inputcheckbox" type="radio" id="trade_{{ trade.id }}" name="trade" value="{{ trade.id }}"{% ifequal fbuser.trade.id trade.id %} checked="checked"{% endifequal %}></td><td><label style="white-space: nowrap;" for="trade_{{ trade.id }}"><img style="vertical-align: bottom" src="{{ MEDIA_URL }}icons/{{ trade.icon }}"> {{ trade.name }} - {{ trade.fbuser_set.count }}</label></td>
+        <td class="pad_right_xs pad_left pad_top_xs pad_bottom_xs"><input class="inputradio inputcheckbox" type="radio" id="trade_{{ trade.id }}" name="trade" value="{{ trade.id }}"{% ifequal fbuser.trade.id trade.id %} checked="checked"{% endifequal %}></td>
+        <td><label style="white-space: nowrap;" for="trade_{{ trade.id }}"><img style="vertical-align: bottom" src="{{ MEDIA_URL }}icons/{{ trade.icon }}"> {{ trade.name }} - {{ trade.fbuser_set.count }}</label></td>
         </tr>
         {% endfor %}
         </table>
@@ -62,7 +63,7 @@
 
     <div class="subheader"><h3>List yourself on Labor market</h3></div>
     <div class="box clearfix">
-        <table class="formtable" cellpadding="0">
+        <table class="formtable" cellpadding="0" width="100%">
         <tbody>
         <tr><td>
         To list your services{% if fbuser.trade %} as a {{ fbuser.trade.name }}{% endif %} in the Labor Market, enter your hourly rate.
